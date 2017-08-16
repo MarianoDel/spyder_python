@@ -1,0 +1,134 @@
+#### USO DE EMACS ######## http://www.masteringemacs.org
+
+C-g  	    //quit current command
+
+### Funcionalidad de Archivos ##
+C-x C-f 	  //busca y abre archivo o crea uno nuevo
+C-x s		  //guarda el archivo actual del buffer
+C-x C-s		  //guarda todos los buffers
+C-x k		  //Close file
+
+#Buffers
+C-x b		//Switch Buffers
+C-x C-b		//Get a List of Buffers
+C-x o		//Switch to Other Window
+C-x 1		//Close Other Window
+C-x 2		//Split the Screen Horizontally
+
+
+### Edicion de Texto ###
+C-space	    //hace la primera marca para seleccionar texto
+M-w	    //copia texto sin borrar original
+C-w	    //copia texto borra original
+M-k	    //borra hasta el final de la linea (queda en kill ring)
+C-y 	    //pega texto copiado, incluso desde otras ventanas
+
+#Undo
+C-x u	    //deshacer (undo)
+C-_ 	    //(redo)
+
+#Movimientos del Cursor
+C-n	     //next line
+C-p	     //previus line
+C-a	     //principio de linea
+C-e	     //fin de linea
+M-f	     //avanzar una palabra
+M-b	     //retroceder una palabra
+M-e	     //avanza una sentencia entera
+M-a	     //retrocede una sentencia entera
+C-up/down    //avanza o retrocede un parrafo entero
+
+#Movimientos de pagina
+C-v	     //avanza una pagina
+M-v	     //retrocede una pagina
+M->	     //final del documento
+M-<	     //principio del documento
+C-u C-space  //SALTO ATRAS (ultimo salto)
+
+#Movimientos por expresiones
+C-M-f	     //proximo cierre de expresion { [ "
+C-M-b	     //cierre anterior de expresion } ] "
+C-M-d	     //se mueve al proximo grupo de expresiones
+C-M-u	     //se mueve al grupo anterior de expresiones
+
+#Search	ISearch (find and replace)
+C-s search-word	//C-s o C-r voy saltando entre coincidencias
+M-c 		//quita o agrega case sensivity de la nusqueda
+C-w		//pega palabra
+C-y		//pega texto
+M-n		//busquedas anteriores
+
+#Indentation
+C-a M-f
+M-m
+Tab		//indent line
+C-M-\		//indent selection
+
+#Bookmarts register
+C-x r space	//pone un bookmark
+C-x j 		//salta entre bookmarks
+C-x r m		//poner nombre al bookmark
+C-x r b		//saltar al nombre de bookmark
+C-x r l		//listar bookmarks
+
+#IMenu
+M-x imenu	//saltar entre funciones del buffer
+
+#TAGS
+M-,
+M-.
+M-*			//jump back
+M-x tags-apropos       	//wildcard search
+
+#GOTO Line
+M-g g
+
+
+### Running SHELL Comands
+M-x eshell  //ejecuta shell de emacs
+M-x shell   //ejecuta bash
+
+
+### Modos de edicion ###
+C-h m	     	 //lista todos los modos
+
+
+### Customizaciones ###
+~/.emacs	    //lee el lsitados de customizaciones antes de arrancar
+
+#para customizar colores, fondo highlight
+M-x customize
+(menu-bar-mode -1)	//quita el menu en X
+(tool-bar-mode -1)	//quita los iconos en X
+(scroll-bar-mode -1)	//quita la barra lateral
+
+#numeros de linea
+M-x linum-mode	 	//activa los nuemeros de linea en el buffer
+M-x global-linum-mode	//activa los numeros de linea en todos los buffers
+(global-linum-mode 1)	//poner en .emacs para activar antes de entrar
+
+#para probar customizaciones del archivo u otro archivo, seleccionar el texto y
+M-x eval-region		     //solo parte seleccionada
+M-x eval-buffer		     //evalua todo el buffer
+C-M-x 			     //evalua solo la linea OJO no funciona
+
+#Auto-Indent
+C-j	//activa el modo
+(define-key global-map (kbd "RET") 'newline-and-indent)	//global en .emacs
+
+
+### Funcionalidad de paquetes
+#listar paquetes desde ELPA (por defecto)
+M-x list-packages      //'i' para marcar 'u' desmarcar 'x' hacer install
+
+#mas cantidad de repositorios, colocar esto en .emcas
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
+#cuando voy a activar los paquetes
+(package-initialize)
+
+#list of installed .emacs.d/elpa/*
+better-defaults
+material-theme
+

@@ -1,0 +1,370 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AAPL_EVM	EVM_from_quantinsti.py	/^AAPL_EVM = EVM(data, n)$/;"	v
+AAPL_ForceIndex	ForceI_from_quantinsti.py	/^AAPL_ForceIndex = ForceIndex(data,n)$/;"	v
+BBANDS	Bollinger_from_quantinsti.py	/^def BBANDS(data, ndays):$/;"	f
+C	temp.py	/^C = np.array (cval)$/;"	v
+CCI	CCI_from_quantinsti.py	/^CCI = NIFTY_CCI['CCI']$/;"	v
+CCI	CCI_from_quantinsti.py	/^def CCI(data, ndays): $/;"	f
+EVM	EVM_from_quantinsti.py	/^EVM = AAPL_EVM['EVM']$/;"	v
+EVM	EVM_from_quantinsti.py	/^def EVM(data, ndays): $/;"	f
+EWMA	MA_from_quantinsti.py	/^EWMA = EWMA_NIFTY['EWMA_200']$/;"	v
+EWMA	MA_from_quantinsti.py	/^def EWMA(data, ndays): $/;"	f
+EWMA_NIFTY	MA_from_quantinsti.py	/^EWMA_NIFTY = EWMA(data,ew)$/;"	v
+EWMA_NIFTY	MA_from_quantinsti.py	/^EWMA_NIFTY = EWMA_NIFTY.dropna()$/;"	v
+FUENTE_200V	magneto_paremeters_calculate.py	/^FUENTE_200V = 200.0$/;"	v
+FUENTE_200V	magneto_paremeters_prototyping.py	/^FUENTE_200V = 200.0$/;"	v
+FUENTE_40V	magneto_paremeters_calculate.py	/^FUENTE_40V = 40.0					#40V y 200V son lo que esta hardcodeado$/;"	v
+FUENTE_40V	magneto_paremeters_prototyping.py	/^FUENTE_40V = 40.0					#40V y 200V son lo que esta hardcodeado$/;"	v
+ForceIndex	ForceI_from_quantinsti.py	/^def ForceIndex(data, ndays): $/;"	f
+Hjw	MAF_01.py	/^Hjw = 0.25 * (1 + exp(-1*2j*pi*f) + exp(-2*2j*pi*f) + exp(-3*2j*pi*f))$/;"	v
+I	EM_conductor_01.py	/^I = 10000000000$/;"	v
+Id	diode.py	/^Id = Is*(np.exp(Vd1\/(n*Vt))-1)$/;"	v
+Id2	diode.py	/^Id2 = (12 - Vd2)\/Rserie$/;"	v
+Is	diode.py	/^Is = 10**-12$/;"	v
+Ks	EM_n_rings_resonator.py	/^Ks = [EMpy.devices.Coupler(wls, numpy.sqrt(0.08), 1.),$/;"	v
+L	current_graph_01.py	/^L = 18e-3$/;"	v
+LR_tau	magneto_paremeters_calculate.py	/^LR_tau = inductance \/ resistance$/;"	v
+LR_tau	magneto_paremeters_prototyping.py	/^LR_tau = inductance \/ resistance$/;"	v
+LookForTransitions	square_codes_02.py	/^def LookForTransitions (signal):$/;"	f
+LookForTransitions	square_codes_03.py	/^def LookForTransitions (t, signal):$/;"	f
+LookForTransitions2	square_codes_02.py	/^def LookForTransitions2 (signal):$/;"	f
+LookForTransitions2	square_codes_03.py	/^def LookForTransitions2 (signal):$/;"	f
+N	portfolio_from_quantopian.py	/^N = 10$/;"	v
+N	square_codes_01.py	/^N = 10$/;"	v
+N	square_codes_02.py	/^N = 10$/;"	v
+N	square_codes_03.py	/^N = 10$/;"	v
+N	square_wave_vector.py	/^N = 10$/;"	v
+NIFTY	Volatil_from_quantinsti.py	/^NIFTY = web.DataReader('WFC',data_source='yahoo',start='1\/1\/2015', end='today')$/;"	v
+NIFTY_BBANDS	Bollinger_from_quantinsti.py	/^NIFTY_BBANDS = BBANDS(data, n)$/;"	v
+NIFTY_CCI	CCI_from_quantinsti.py	/^NIFTY_CCI = CCI(data, n)$/;"	v
+NIFTY_ROC	ROC_from_quantinsti.py	/^NIFTY_ROC = ROC(data,n)$/;"	v
+NRR	EM_n_rings_resonator.py	/^NRR = EMpy.devices.NRR(Ks, neffs, l1s, l2s).solve()$/;"	v
+PL	magneto_paremeters_calculate.py	/^PL = 0.5 * inductance * current_limit * current_limit \/ period$/;"	v
+PL	magneto_paremeters_prototyping.py	/^PL = 0.5 * inductance * current_limit * current_limit \/ period$/;"	v
+PRL	magneto_paremeters_calculate.py	/^PRL = voltageRL * voltageRL \/ resistance$/;"	v
+PRL	magneto_paremeters_prototyping.py	/^PRL = voltageRL * voltageRL \/ resistance$/;"	v
+PRsnubber	magneto_paremeters_calculate.py	/^PRsnubber = PL - PRL$/;"	v
+PRsnubber	magneto_paremeters_prototyping.py	/^PRsnubber = PL - PRL$/;"	v
+R	EM_n_rings_resonator.py	/^R = 5e-6$/;"	v
+ROC	ROC_from_quantinsti.py	/^ROC = NIFTY_ROC['Rate of Change']$/;"	v
+ROC	ROC_from_quantinsti.py	/^def ROC(data,n):$/;"	f
+RSNUBBER_POWER_MAX	magneto_paremeters_calculate.py	/^RSNUBBER_POWER_MAX = 15.0$/;"	v
+RSNUBBER_POWER_MAX	magneto_paremeters_prototyping.py	/^RSNUBBER_POWER_MAX = 15.0$/;"	v
+R_1	portfolio_from_quantopian.py	/^R_1 = np.random.normal(1.01, 0.03, 100)     #mean = 1.01 std=0.03$/;"	v
+R_i	portfolio_from_quantopian.py	/^    R_i = R_1 + np.random.normal(0.001, 0.02, 100)$/;"	v
+Rserie	diode.py	/^Rserie = 1000$/;"	v
+SMA	MA_from_quantinsti.py	/^SMA = SMA_NIFTY['SMA']$/;"	v
+SMA	MA_from_quantinsti.py	/^def SMA(data, ndays): $/;"	f
+SMA_NIFTY	MA_from_quantinsti.py	/^SMA_NIFTY = SMA(data,n)$/;"	v
+SMA_NIFTY	MA_from_quantinsti.py	/^SMA_NIFTY = SMA_NIFTY.dropna()$/;"	v
+SWG	EM_n_rings_resonator.py	/^SWG = EMpy.devices.SWG(400, 220, 125).solve(wls)$/;"	v
+Td	magneto_paremeters_calculate.py	/^Td = (-LR_tau) * math.log(1 - (current_limit * resistance) \/ Vsnubber2)$/;"	v
+Td	magneto_paremeters_prototyping.py	/^Td = (-LR_tau) * math.log(1 - (current_limit * resistance) \/ Vsnubber2)$/;"	v
+Td_aux	magneto_paremeters_calculate.py	/^Td_aux = Td + 0.25e-3		#sumo un margen por variaciones de hard$/;"	v
+Td_aux	magneto_paremeters_prototyping.py	/^Td_aux = Td + 0.25e-3		#sumo un margen por variaciones de hard$/;"	v
+Ts	MAF_01.py	/^Ts = 0.1$/;"	v
+Ts	max_error.py	/^Ts = 0.0005$/;"	v
+U	current_graph_01.py	/^U = 40.0$/;"	v
+UpdateTransitions	square_codes_02.py	/^def UpdateTransitions (transition):$/;"	f
+UpdateTransitions	square_codes_03.py	/^def UpdateTransitions (transition):$/;"	f
+Vd1	diode.py	/^Vd1=np.arange(-5,0.6,0.01)$/;"	v
+Vd2	diode.py	/^Vd2 = np.arange(-5,12,0.01)$/;"	v
+Vsnubber	magneto_paremeters_calculate.py	/^Vsnubber = math.sqrt(PRsnubber * resistance_discharge)$/;"	v
+Vsnubber	magneto_paremeters_prototyping.py	/^Vsnubber = math.sqrt(PRsnubber * resistance_discharge)$/;"	v
+Vsnubber2	magneto_paremeters_calculate.py	/^Vsnubber2 = Vsnubber + current_limit * resistance$/;"	v
+Vsnubber2	magneto_paremeters_prototyping.py	/^Vsnubber2 = Vsnubber + current_limit * resistance$/;"	v
+Vt	diode.py	/^Vt = 0.025$/;"	v
+apple	Stocks/pandas_pdr.py	/^	apple = pdr.get_data_yahoo('AAPL', start, end)$/;"	v
+armado	METAB_fallas.py	/^armado = 3$/;"	v
+armado	METAB_fallas2.py	/^armado = 3$/;"	v
+assets	portfolio_from_quantopian.py	/^assets = np.zeros((N, 100))$/;"	v
+ax	CCI_from_quantinsti.py	/^ax = fig.add_subplot(2, 1, 1)$/;"	v
+ax	EVM_from_quantinsti.py	/^ax = fig.add_subplot(2, 1, 1)$/;"	v
+ax	ROC_from_quantinsti.py	/^ax = fig.add_subplot(2, 1, 1)$/;"	v
+ax	square_wave_vector.py	/^ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])$/;"	v
+ax1	METAB_fallas.py	/^ax1 = fig.add_subplot(111) # and a subplot$/;"	v
+ax1	METAB_fallas2.py	/^ax1 = fig.add_subplot(111) # and a subplot$/;"	v
+ax1	pareto_chart.py	/^ax1 = fig.add_subplot(111) # and a subplot$/;"	v
+ax2	METAB_fallas.py	/^ax2 = ax1.twinx() # create a duplicate y axis$/;"	v
+ax2	METAB_fallas2.py	/^ax2 = ax1.twinx() # create a duplicate y axis$/;"	v
+ax2	pareto_chart.py	/^ax2 = ax1.twinx() # create a duplicate y axis$/;"	v
+backup	Stocks/pandas_pdr.py	/^	backup = pd.read_csv("apple_csv.txt")$/;"	v
+bfield	EM_conductor_01.py	/^def bfield(x,y,z):$/;"	f
+bit_vals	square_codes_01.py	/^bit_vals = [-1, 1]$/;"	v
+bit_vals	square_codes_02.py	/^bit_vals = [-1, 1]$/;"	v
+bit_vals	square_codes_03.py	/^bit_vals = [-1, 1]$/;"	v
+bit_vals	square_wave_vector.py	/^bit_vals = [-1, 1]$/;"	v
+bits	MLE_on_code_detect.py	/^bits = pilot_bits + code_bits + 1$/;"	v
+bmatrix	EM_conductor_01.py	/^bmatrix = np.zeros((xwidth,ywidth))$/;"	v
+boundary	EM_fully_vect.py	/^boundary = '0000'$/;"	v
+bx	CCI_from_quantinsti.py	/^bx = fig.add_subplot(2, 1, 2)$/;"	v
+bx	EVM_from_quantinsti.py	/^bx = fig.add_subplot(2, 1, 2)$/;"	v
+bx	ROC_from_quantinsti.py	/^bx = fig.add_subplot(2, 1, 2)$/;"	v
+cantidad_pcb	METAB_fallas.py	/^cantidad_pcb = primeras + segundas$/;"	v
+cantidad_pcb	METAB_fallas2.py	/^cantidad_pcb = primeras + segundas$/;"	v
+capacitance_discharge	magneto_paremeters_calculate.py	/^capacitance_discharge = 100e-6		#Farads$/;"	v
+capacitance_discharge	magneto_paremeters_prototyping.py	/^capacitance_discharge = 100e-6		#Farads$/;"	v
+check_tickers_file	Stocks/get_tickers.py	/^def check_tickers_file (t_name):$/;"	f
+clk_vect	MLE_on_code_detect.py	/^clk_vect = np.zeros(transitions)$/;"	v
+clks	MLE_on_code_detect.py	/^clks = bits * 3.0$/;"	v
+close	MA_from_quantinsti.py	/^close = data['Close']$/;"	v
+code_bits	MLE_on_code_detect.py	/^code_bits = 24$/;"	v
+code_to_tx	MLE_on_code_detect.py	/^code_to_tx = np.array([1,1,1,0,0,0,1,1,1,0,0,0])$/;"	v
+code_to_tx	square_codes_01.py	/^code_to_tx = np.array([1,1,1,0,0,0,1,1,1,0,0,0])$/;"	v
+code_to_tx	square_codes_02.py	/^code_to_tx = np.array([1,1,1,0,0,0,1,1,1,0,0,0])$/;"	v
+code_to_tx	square_codes_03.py	/^code_to_tx = np.array([1,1,1,0,0,0,1,1,1,0,0,0])$/;"	v
+code_vect	MLE_on_code_detect.py	/^code_vect = np.zeros(transitions)$/;"	v
+constant	EM_conductor_01.py	/^constant = mu0\/(4*np.pi)$/;"	v
+coord	EM_conductor_01.py	/^coord = [(10,10), (20,10), (20,20), (10,20), (10,25)]$/;"	v
+coord2	EM_conductor_01.py	/^coord2 = []$/;"	v
+cov_mat	portfolio_from_quantopian.py	/^cov_mat = np.cov(returns)$/;"	v
+create_single_ticker	Stocks/get_tickers.py	/^def create_single_ticker (t_name):$/;"	f
+current_limit	magneto_paremeters_calculate.py	/^current_limit = 0.8$/;"	v
+current_limit	magneto_paremeters_prototyping.py	/^current_limit = 8.0$/;"	v
+cval	temp.py	/^cval = [25.4, 24.8, 23.4, 27]$/;"	v
+d	EM_single_layer.py	/^d = numpy.array([numpy.inf, 387.5e-9 \/ 1.38, numpy.inf])$/;"	v
+data	Bollinger_from_quantinsti.py	/^data = pd.DataFrame(data)$/;"	v
+data	Bollinger_from_quantinsti.py	/^data = web.DataReader('^NSEI',data_source='yahoo',start='1\/1\/2010', end='1\/1\/2016')$/;"	v
+data	CCI_from_quantinsti.py	/^data = pd.DataFrame(data)$/;"	v
+data	CCI_from_quantinsti.py	/^data = web.DataReader('^NSEI',data_source='yahoo',start='1\/1\/2014', end='1\/1\/2016')$/;"	v
+data	EVM_from_quantinsti.py	/^data = pd.DataFrame(data)$/;"	v
+data	EVM_from_quantinsti.py	/^data = web.DataReader('AAPL',data_source='yahoo',start='1\/1\/2015', end='1\/1\/2016')$/;"	v
+data	ForceI_from_quantinsti.py	/^data = pd.DataFrame(data)$/;"	v
+data	ForceI_from_quantinsti.py	/^data = web.DataReader('AAPL',data_source='yahoo',start='1\/1\/2010', end='1\/1\/2016')$/;"	v
+data	MA_from_quantinsti.py	/^data = pd.DataFrame(data) $/;"	v
+data	MA_from_quantinsti.py	/^data = web.DataReader('WFC',data_source='yahoo',start='1\/1\/2016', end='today')$/;"	v
+data	ROC_from_quantinsti.py	/^data = pd.DataFrame(data)$/;"	v
+data	ROC_from_quantinsti.py	/^data = web.DataReader('^NSEI',data_source='yahoo',start='6\/1\/2015',end='1\/1\/2016')$/;"	v
+data	file_test.py	/^data = np.loadtxt(f, skiprows = 1)$/;"	v
+defects	pareto_chart.py	/^defects = [32, 22, 15, 5, 2]$/;"	v
+df	Stocks/get_tickers.py	/^df = get_tickers()$/;"	v
+end	Stocks/pandas_pdr.py	/^end = datetime.date.today()$/;"	v
+end_of_start_bit	square_codes_01.py	/^end_of_start_bit = len_pilot + len_lambda$/;"	v
+end_of_start_bit	square_codes_01.py	/^end_of_start_bit = len_pilot + noisy_lambda$/;"	v
+end_of_start_bit	square_codes_02.py	/^end_of_start_bit = len_pilot + len_lambda$/;"	v
+end_of_start_bit	square_codes_02.py	/^end_of_start_bit = len_pilot + noisy_lambda$/;"	v
+end_of_start_bit	square_codes_03.py	/^end_of_start_bit = len_pilot + len_lambda$/;"	v
+end_of_start_bit	square_codes_03.py	/^end_of_start_bit = len_pilot + noisy_lambda$/;"	v
+end_of_wait_bit	square_codes_01.py	/^end_of_wait_bit = end_of_start_bit + len_lambda$/;"	v
+end_of_wait_bit	square_codes_01.py	/^end_of_wait_bit = end_of_start_bit + noisy_lambda$/;"	v
+epsfunc	EM_fully_vect.py	/^def epsfunc(x_, y_):$/;"	f
+ew	MA_from_quantinsti.py	/^ew = 200$/;"	v
+f	MAF_01.py	/^f = np.arange (0, 1, 0.001)$/;"	v
+f	file_test.py	/^f = open ("TrainExer21.txt")$/;"	v
+falling_time	magneto_paremeters_calculate.py	/^falling_time = 3e-3$/;"	v
+falling_time	magneto_paremeters_prototyping.py	/^falling_time = 3e-3$/;"	v
+fig	CCI_from_quantinsti.py	/^fig = plt.figure(figsize=(7,5))$/;"	v
+fig	EM_fully_vect.py	/^fig = pylab.figure()$/;"	v
+fig	EVM_from_quantinsti.py	/^fig = plt.figure(figsize=(7,5))$/;"	v
+fig	METAB_fallas.py	/^fig = plt.figure(1)$/;"	v
+fig	METAB_fallas2.py	/^fig = plt.figure(1)$/;"	v
+fig	ROC_from_quantinsti.py	/^fig = plt.figure(figsize=(7,5))$/;"	v
+fig	pareto_chart.py	/^fig = plt.figure() # create a figure$/;"	v
+fig	square_wave_vector.py	/^fig = plt.figure()$/;"	v
+freq_fallas	METAB_fallas.py	/^freq_fallas = [umal, manipuleo, armado]$/;"	v
+freq_fallas	METAB_fallas2.py	/^freq_fallas = [armado, manipuleo,umal]$/;"	v
+freq_fallas_salida	METAB_fallas.py	/^freq_fallas_salida = [salida_umal, salida_manipuleo, salida_armado]$/;"	v
+freq_fallas_salida	METAB_fallas2.py	/^freq_fallas_salida = [salida_armado, salida_manipuleo, salida_umal]$/;"	v
+get_info	Stocks/pandas_pdr.py	/^			get_info = False$/;"	v
+get_info	Stocks/pandas_pdr.py	/^get_info = False$/;"	v
+get_tickers	Stocks/get_tickers.py	/^def get_tickers ():$/;"	f
+i_t	current_graph_01.py	/^i_t = U \/ L * (t - t**2 \/ ( 2 * t_rise))$/;"	v
+imax	max_error.py	/^imax = 1$/;"	v
+ind	pareto_chart.py	/^ind = np.arange(len(defects))  # the x locations for the groups$/;"	v
+inductance	magneto_paremeters_calculate.py	/^inductance = 350e-3$/;"	v
+inductance	magneto_paremeters_prototyping.py	/^inductance = 18.e-3$/;"	v
+information_ratio	sharpe.py	/^def information_ratio(returns, benchmark_returns, days=252):$/;"	f
+input_adding	MA_tc_2016_01.py	/^input_adding = input_sin + input_rand;$/;"	v
+input_rand	MA_tc_2016_01.py	/^input_rand = np.random.normal(mu, sigma, 1000);$/;"	v
+input_sin	MA_tc_2016_01.py	/^input_sin = sin(input_vect);$/;"	v
+input_vect	MA_tc_2016_01.py	/^input_vect = np.linspace(0,4*np.pi,1000);$/;"	v
+iso_layers	EM_single_layer.py	/^iso_layers = EMpy.utils.Multilayer()$/;"	v
+it	max_error.py	/^it = imax * sin(2*pi*50*t)$/;"	v
+itd	max_error.py	/^itd = imax * sin(2*pi*50*t+pi\/40)$/;"	v
+l1s	EM_n_rings_resonator.py	/^l1s = [numpy.pi * R, numpy.pi * R, numpy.pi * R]$/;"	v
+l2s	EM_n_rings_resonator.py	/^l2s = [numpy.pi * R, numpy.pi * R, numpy.pi * R]$/;"	v
+labels	pareto_chart.py	/^labels = ['vertical', 'horizontal', 'behind', 'left area', 'other']$/;"	v
+len_lambda	square_codes_01.py	/^len_lambda = 330$/;"	v
+len_lambda	square_codes_02.py	/^len_lambda = 330$/;"	v
+len_lambda	square_codes_03.py	/^len_lambda = 330$/;"	v
+len_pilot	square_codes_01.py	/^len_pilot = 5000$/;"	v
+len_pilot	square_codes_02.py	/^len_pilot = 5000$/;"	v
+len_pilot	square_codes_03.py	/^len_pilot = 5000$/;"	v
+lenght	max_error.py	/^lenght = 20$/;"	v
+length	EM_conductor_01.py	/^    length = (lengthx**2 + lengthy**2)**.5$/;"	v
+lengthx	EM_conductor_01.py	/^    lengthx = coord[n+1][0] - coord[n][0]$/;"	v
+lengthy	EM_conductor_01.py	/^    lengthy = coord[n+1][1] - coord[n][1]$/;"	v
+lista_fallas	METAB_fallas.py	/^lista_fallas = [ "uMal", "Manipuleo", "Armado"]$/;"	v
+lista_fallas	METAB_fallas2.py	/^lista_fallas = ["Armado" , "Manipuleo", "uMal"]$/;"	v
+local_offset	square_codes_01.py	/^    local_offset = offset+x*3*len_lambda$/;"	v
+local_offset	square_codes_01.py	/^local_offset = 0$/;"	v
+local_offset	square_codes_02.py	/^    local_offset = offset+x*3*len_lambda$/;"	v
+local_offset	square_codes_02.py	/^local_offset = 0$/;"	v
+local_offset	square_codes_03.py	/^    local_offset = offset+x*3*len_lambda$/;"	v
+local_offset	square_codes_03.py	/^local_offset = 0$/;"	v
+maintenance_time	magneto_paremeters_calculate.py	/^maintenance_time = 3e-3$/;"	v
+maintenance_time	magneto_paremeters_prototyping.py	/^maintenance_time = 10e-3$/;"	v
+manipuleo	METAB_fallas.py	/^manipuleo = 6$/;"	v
+manipuleo	METAB_fallas2.py	/^manipuleo = 6$/;"	v
+mean_returns	portfolio_from_quantopian.py	/^mean_returns = [(np.mean(R) - 1)*100 for R in returns]$/;"	v
+modigliani_ratio	sharpe.py	/^def modigliani_ratio(returns, benchmark_returns, rf, days=252):$/;"	f
+mu0	EM_conductor_01.py	/^mu0 = 1e-7$/;"	v
+my_bits	square_codes_01.py	/^my_bits = []$/;"	v
+my_bits	square_codes_02.py	/^my_bits = []$/;"	v
+my_bits	square_codes_03.py	/^my_bits = []$/;"	v
+my_bits	square_wave_vector.py	/^my_bits = []$/;"	v
+n	Bollinger_from_quantinsti.py	/^n = 50$/;"	v
+n	CCI_from_quantinsti.py	/^n = 20$/;"	v
+n	EM_single_layer.py	/^n = numpy.array([1., 1.38, 1.9044])$/;"	v
+n	EVM_from_quantinsti.py	/^n = 14$/;"	v
+n	ForceI_from_quantinsti.py	/^n = 1$/;"	v
+n	MA_from_quantinsti.py	/^n = 50$/;"	v
+n	ROC_from_quantinsti.py	/^n = 5$/;"	v
+n	diode.py	/^n = 1;$/;"	v
+n0	EM_single_layer.py	/^    n0 = EMpy.materials.RefractiveIndex(n[i])$/;"	v
+neffs	EM_n_rings_resonator.py	/^neffs = [SWG.neff, SWG.neff, SWG.neff]$/;"	v
+neigs	EM_fully_vect.py	/^neigs = 2$/;"	v
+noisy_lambda	square_codes_01.py	/^    noisy_lambda = len_lambda + sigma_lambda * np.random.randn()$/;"	v
+noisy_lambda	square_codes_01.py	/^noisy_lambda = len_lambda + sigma_lambda * np.random.randn()$/;"	v
+noisy_lambda	square_codes_02.py	/^    noisy_lambda = len_lambda + sigma_lambda * np.random.randn()$/;"	v
+noisy_lambda	square_codes_02.py	/^noisy_lambda = len_lambda + sigma_lambda * np.random.randn()$/;"	v
+noisy_lambda	square_codes_03.py	/^    noisy_lambda = len_lambda + sigma_lambda * np.random.randn()$/;"	v
+noisy_lambda	square_codes_03.py	/^noisy_lambda = len_lambda + sigma_lambda * np.random.randn()$/;"	v
+offset	square_codes_01.py	/^    offset = 3*noisy_lambda$/;"	v
+offset	square_codes_01.py	/^offset = end_of_wait_bit$/;"	v
+offset	square_codes_02.py	/^    offset = 3*noisy_lambda$/;"	v
+offset	square_codes_02.py	/^offset = end_of_start_bit$/;"	v
+offset	square_codes_03.py	/^    offset = 3*noisy_lambda$/;"	v
+offset	square_codes_03.py	/^offset = end_of_start_bit$/;"	v
+output_vect	MA_tc_2016_01.py	/^output_vect = np.zeros(1000);$/;"	v
+p_returns	portfolio_from_quantopian.py	/^p_returns = np.dot(weights, mean_returns)$/;"	v
+parts	EM_conductor_01.py	/^parts = 0$/;"	v
+peak_c	magneto_paremeters_calculate.py	/^peak_c = (current_limit * 1.5) * 0.196 + 0.46       #convierto corriente max a tensi�n con 50% de margen$/;"	v
+peak_c	magneto_paremeters_prototyping.py	/^peak_c = (current_limit * 1.5) * 0.196 + 0.46       #convierto corriente max a tensi�n con 50% de margen$/;"	v
+peak_c_adc	magneto_paremeters_calculate.py	/^peak_c_adc = (peak_c) \/ 3.0 * 4095                  #valor pico permitido en ADC$/;"	v
+peak_c_adc	magneto_paremeters_calculate.py	/^peak_c_adc = round(peak_c_adc, 0)$/;"	v
+peak_c_adc	magneto_paremeters_prototyping.py	/^peak_c_adc = (peak_c) \/ 3.0 * 4095                  #valor pico permitido en ADC$/;"	v
+peak_c_adc	magneto_paremeters_prototyping.py	/^peak_c_adc = round(peak_c_adc, 0)$/;"	v
+period	magneto_paremeters_calculate.py	/^period = rising_time + maintenance_time + falling_time + stop_time$/;"	v
+period	magneto_paremeters_prototyping.py	/^period = rising_time + maintenance_time + falling_time + stop_time$/;"	v
+pilot_bits	MLE_on_code_detect.py	/^pilot_bits = 12$/;"	v
+primeras	METAB_fallas.py	/^primeras = 3$/;"	v
+primeras	METAB_fallas2.py	/^primeras = 3$/;"	v
+pwm_200_1	magneto_paremeters_calculate.py	/^	pwm_200_1 = voltage \/ FUENTE_200V$/;"	v
+pwm_200_1	magneto_paremeters_prototyping.py	/^		pwm_200_1 = voltage \/ FUENTE_200V$/;"	v
+pwm_200_2	magneto_paremeters_calculate.py	/^	pwm_200_2 = voltage2 \/ FUENTE_200V$/;"	v
+pwm_200_2	magneto_paremeters_prototyping.py	/^		pwm_200_2 = voltage2 \/ FUENTE_200V$/;"	v
+pwm_40	magneto_paremeters_calculate.py	/^	pwm_40 = voltage \/ FUENTE_40V$/;"	v
+pwm_40	magneto_paremeters_prototyping.py	/^	pwm_40 = voltage \/ FUENTE_40V$/;"	v
+pwm_40_1	magneto_paremeters_calculate.py	/^	pwm_40_1 = voltage \/ FUENTE_40V$/;"	v
+pwm_40_1	magneto_paremeters_prototyping.py	/^		pwm_40_1 = 0.0$/;"	v
+pwm_40_1	magneto_paremeters_prototyping.py	/^		pwm_40_1 = voltage \/ FUENTE_40V$/;"	v
+pwm_40_2	magneto_paremeters_calculate.py	/^	pwm_40_2 = voltage2 \/ FUENTE_40V$/;"	v
+pwm_40_2	magneto_paremeters_prototyping.py	/^		pwm_40_2 = voltage2 \/ FUENTE_40V$/;"	v
+rects1	pareto_chart.py	/^rects1 = ax1.bar(ind, defects, width=width) # draw the chart$/;"	v
+resistance	magneto_paremeters_calculate.py	/^resistance = 49$/;"	v
+resistance	magneto_paremeters_prototyping.py	/^resistance = 3.0$/;"	v
+resistance_discharge	magneto_paremeters_calculate.py	/^resistance_discharge = 1175.0$/;"	v
+resistance_discharge	magneto_paremeters_prototyping.py	/^resistance_discharge = 1175.0$/;"	v
+return_volatilities	portfolio_from_quantopian.py	/^return_volatilities = [np.std(R) for R in returns]$/;"	v
+returns	portfolio_from_quantopian.py	/^returns = np.zeros((N, 100))$/;"	v
+rising_time	magneto_paremeters_calculate.py	/^rising_time = 3e-3$/;"	v
+rising_time	magneto_paremeters_prototyping.py	/^rising_time = 3e-3$/;"	v
+salida_armado	METAB_fallas.py	/^salida_armado = 2$/;"	v
+salida_armado	METAB_fallas2.py	/^salida_armado = 2$/;"	v
+salida_manipuleo	METAB_fallas.py	/^salida_manipuleo = 4$/;"	v
+salida_manipuleo	METAB_fallas2.py	/^salida_manipuleo = 4$/;"	v
+salida_umal	METAB_fallas.py	/^salida_umal = 8$/;"	v
+salida_umal	METAB_fallas2.py	/^salida_umal = 8$/;"	v
+segundas	METAB_fallas.py	/^segundas = 19$/;"	v
+segundas	METAB_fallas2.py	/^segundas = 19$/;"	v
+sharpe	sharpe.py	/^def sharpe(returns, rf, days=252):$/;"	f
+sigma_lambda	square_codes_01.py	/^sigma_lambda = 30$/;"	v
+sigma_lambda	square_codes_02.py	/^sigma_lambda = 30$/;"	v
+sigma_lambda	square_codes_03.py	/^sigma_lambda = 30$/;"	v
+signal	square_codes_01.py	/^signal = np.zeros_like(t)$/;"	v
+signal	square_codes_02.py	/^signal = np.zeros_like(t)$/;"	v
+signal	square_codes_03.py	/^signal = np.zeros_like(t)$/;"	v
+signaln	square_codes_01.py	/^signaln = np.zeros_like(t)$/;"	v
+signaln	square_codes_02.py	/^signaln = np.zeros_like(t)$/;"	v
+signaln	square_codes_03.py	/^signaln = np.zeros_like(t)$/;"	v
+solution_iso	EM_single_layer.py	/^solution_iso = tm.solve(wls)$/;"	v
+solver	EM_fully_vect.py	/^solver = EMpy.modesolvers.FD.VFDModeSolver(wl, x, y, epsfunc, boundary).solve($/;"	v
+start	Stocks/pandas_pdr.py	/^start = datetime.datetime(2017,7,5)$/;"	v
+start2	Stocks/pandas_pdr.py	/^		start2 = start - tdelta$/;"	v
+stop_time	magneto_paremeters_calculate.py	/^stop_time = 6e-3$/;"	v
+stop_time	magneto_paremeters_prototyping.py	/^stop_time = 6e-3$/;"	v
+t	current_graph_01.py	/^t = np.arange(0, t_graph, t_graph \/ 1000.0)$/;"	v
+t	max_error.py	/^t = np.arange (0, lenght * Ts, Ts)$/;"	v
+t	square_codes_01.py	/^t = np.arange(0, 30, tstep)$/;"	v
+t	square_codes_02.py	/^t = np.arange(0, 30, tstep)$/;"	v
+t	square_codes_03.py	/^t = np.arange(0, 30, tstep)$/;"	v
+t2	square_codes_03.py	/^t2 = np.arange (0, 60, tstep)$/;"	v
+t_graph	current_graph_01.py	/^t_graph = 10e-3$/;"	v
+t_rise	current_graph_01.py	/^t_rise = 3e-3$/;"	v
+tau_discharge	magneto_paremeters_calculate.py	/^tau_discharge = 0.1175 				#RC$/;"	v
+tau_discharge	magneto_paremeters_prototyping.py	/^tau_discharge = 0.1175 				#RC$/;"	v
+tdelta	Stocks/pandas_pdr.py	/^tdelta = datetime.timedelta(days=2)$/;"	v
+the_cumsum	METAB_fallas.py	/^the_cumsum = np.cumsum(freq_fallas) #  32, 32 + 22, 32 + 22 + 15, 32 + 22 + 15 + 5, 32 + 22, + 15 + 5 + 2$/;"	v
+the_cumsum	METAB_fallas2.py	/^the_cumsum = np.cumsum(freq_fallas) #  32, 32 + 22, 32 + 22 + 15, 32 + 22 + 15 + 5, 32 + 22, + 15 + 5 + 2$/;"	v
+the_cumsum	pareto_chart.py	/^the_cumsum = np.cumsum(defects) #  32, 32 + 22, 32 + 22 + 15, 32 + 22 + 15 + 5, 32 + 22, + 15 + 5 + 2$/;"	v
+the_sum	METAB_fallas.py	/^the_sum = sum(freq_fallas) # ie, 32 + 22 + 15 + 5 + 2$/;"	v
+the_sum	METAB_fallas2.py	/^the_sum = sum(freq_fallas) # ie, 32 + 22 + 15 + 5 + 2$/;"	v
+the_sum	pareto_chart.py	/^the_sum = sum(defects) # ie, 32 + 22 + 15 + 5 + 2$/;"	v
+theta_inc	EM_single_layer.py	/^theta_inc = EMpy.utils.deg2rad(10.)$/;"	v
+tlambda	square_codes_01.py	/^tlambda = 330 * tstep #330us$/;"	v
+tlambda	square_codes_02.py	/^tlambda = len_lambda * tstep #330us$/;"	v
+tlambda	square_codes_03.py	/^tlambda = len_lambda * tstep #330us$/;"	v
+tm	EM_single_layer.py	/^tm = EMpy.transfer_matrix.IsotropicTransferMatrix(iso_layers, theta_inc)$/;"	v
+tol	EM_fully_vect.py	/^tol = 1e-8$/;"	v
+total_salidas	METAB_fallas.py	/^total_salidas = primeras + 11$/;"	v
+total_salidas	METAB_fallas2.py	/^total_salidas = primeras + 11$/;"	v
+tr	square_codes_02.py	/^tr = LookForTransitions(signaln)$/;"	v
+tr	square_codes_03.py	/^tr = LookForTransitions(t2, vapp)$/;"	v
+transitions	MLE_on_code_detect.py	/^transitions = clks * 2.0$/;"	v
+tstep	square_codes_01.py	/^tstep = 0.001   #en ms, 1us$/;"	v
+tstep	square_codes_02.py	/^tstep = 0.001   #en ms, 1us$/;"	v
+tstep	square_codes_03.py	/^tstep = 0.001   #en ms, 1us$/;"	v
+umal	METAB_fallas.py	/^umal = 13$/;"	v
+umal	METAB_fallas2.py	/^umal = 13$/;"	v
+update_all_tickers	Stocks/get_tickers.py	/^def update_all_tickers (df):$/;"	f
+update_ax2	pareto_chart.py	/^def update_ax2(axx):$/;"	f
+update_single_ticker	Stocks/get_tickers.py	/^def update_single_ticker (t_name):$/;"	f
+vapp	square_codes_03.py	/^vapp = np.zeros(signal.size + signaln.size)$/;"	v
+var_p	portfolio_from_quantopian.py	/^var_p = np.dot(np.dot(weights, cov_mat), weights.T)$/;"	v
+vol_p	portfolio_from_quantopian.py	/^vol_p = np.sqrt(var_p)$/;"	v
+voltage	magneto_paremeters_calculate.py	/^voltage = (current_limit * inductance \/ rising_time)$/;"	v
+voltage	magneto_paremeters_calculate.py	/^voltage = resistance * current_limit$/;"	v
+voltage	magneto_paremeters_prototyping.py	/^voltage = (current_limit * inductance \/ rising_time) * 2.0$/;"	v
+voltage	magneto_paremeters_prototyping.py	/^voltage = resistance * current_limit$/;"	v
+voltage2	magneto_paremeters_calculate.py	/^voltage2 = voltage + current_limit * resistance$/;"	v
+voltage2	magneto_paremeters_prototyping.py	/^voltage2 = current_limit * resistance$/;"	v
+voltageRL	magneto_paremeters_calculate.py	/^voltageRL = current_limit * resistance * math.sqrt(falling_time \/ (3.0 * period))$/;"	v
+voltageRL	magneto_paremeters_prototyping.py	/^voltageRL = current_limit * resistance * math.sqrt(falling_time \/ (3.0 * period))$/;"	v
+weights	portfolio_from_quantopian.py	/^weights = np.random.uniform(0, 1, N)$/;"	v
+weights	portfolio_from_quantopian.py	/^weights = weights\/np.sum(weights)$/;"	v
+width	pareto_chart.py	/^width = .98 # with do of the bars, where a width of 1 indidcates no space between bars$/;"	v
+wl	EM_fully_vect.py	/^wl = 1.55e-6$/;"	v
+wls	EM_n_rings_resonator.py	/^wls = numpy.linspace(1.53e-6, 1.57e-6, 1000)$/;"	v
+wls	EM_single_layer.py	/^wls = numpy.linspace(0.85e-6, 2.25e-6, 300)$/;"	v
+x	EM_conductor_01.py	/^x = range(xwidth)$/;"	v
+x	EM_fully_vect.py	/^x = numpy.linspace(0, 2.48e-6, 125)$/;"	v
+x	METAB_fallas.py	/^x = [1.4,2.4,3.4]$/;"	v
+x	METAB_fallas2.py	/^x = [1.4,2.4,3.4]$/;"	v
+x	max_error.py	/^x = arange(0,20)$/;"	v
+x	pareto_chart.py	/^x = ind + .5 * width # find the middle of the bar$/;"	v
+x_vals	square_codes_01.py	/^x_vals = range(N)$/;"	v
+x_vals	square_codes_02.py	/^x_vals = range(N)$/;"	v
+x_vals	square_codes_03.py	/^x_vals = range(N)$/;"	v
+x_vals	square_wave_vector.py	/^x_vals = range(N)$/;"	v
+xwidth	EM_conductor_01.py	/^xwidth = 26$/;"	v
+y	EM_conductor_01.py	/^y = range(ywidth)$/;"	v
+y	EM_fully_vect.py	/^y = numpy.linspace(0, 2.22e-6, 112)$/;"	v
+ywidth	EM_conductor_01.py	/^ywidth = 26$/;"	v
+z	EM_conductor_01.py	/^z = 1$/;"	v
+z	EM_conductor_01.py	/^z = bmatrix[x][y].T$/;"	v

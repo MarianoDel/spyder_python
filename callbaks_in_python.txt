@@ -1,0 +1,5 @@
+callbacks en python
+
+https://stackoverflow.com/questions/443885/python-callbacks-delegates-what-is-common
+
+https://stackoverflow.com/questions/4689984/implementing-a-callback-in-python-passing-a-callable-reference-to-the-current

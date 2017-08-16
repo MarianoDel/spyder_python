@@ -1,0 +1,139 @@
+##config .emacs al final
+##tutoriales https://www.youtube.com/channel/UCibKclzsnnHjQZFOLuykZ1A
+
+	C-g	cancela los comandos actuales
+	C-/	Undo
+	C-g C-/	Redo
+MOVING THE SCREEN
+	C-v	Move forward one screenful
+	M-v	Move backward one screenful
+	C-l	Clear screen and redisplay all the text,
+		 moving the text around the cursor
+		 to the center of the screen.
+		 (That's CONTROL-L, not CONTROL-1.)
+	C-up arrow		Move up one paragraph
+	C-down arrow	Move down one paragraph
+	C-left arrow	Move one word left
+	C-right arrow	Move one word right
+
+MOVING THE CURSOR
+	C-f	Move forward a character
+	C-b	Move backward a character
+
+	M-f	Move forward a word
+	M-b	Move backward a word
+
+	C-n	Move to next line (desde la posicion actual)
+	C-p	Move to previous line
+
+	C-a	Move to beginning of line
+	C-e	Move to end of line
+
+	M-a	Move back to beginning of sentence
+	M-e	Move forward to end of sentence
+	M-g g	ir al numero de linea elegido
+
+SEARCH
+	C-s	isearch-forward
+	C-r	isearch-backward
+	M-%	search and replace
+	M-C-s	busqueda con expresiones regulares [0-2]
+	M-s o	muestra todas las ocurrencias en el archivo
+	M-x grep	ejemplo is ./*.txt buca la ocurrencia is en .
+
+COMMANDS EXECUTE OR FUNCTIONS EXECUTE
+	M-x function
+	M-x ibuffer
+
+REPEAT CARACTERS
+>> Try that now -- type C-u 8 * to insert ********.
+
+COPING AND PASTE
+
+	<DEL>        Delete the character just before the cursor
+	C-d   	     Delete the next character after the cursor
+
+	M-<DEL>      Kill the word immediately before the cursor
+	M-d	     Kill the next word after the cursor
+	C-k	     Kill from the cursor position to end of line
+
+	M-k	     Kill to the end of the current sentence
+	C-y	     PEGA EL TEXTO desde el BUFFER
+	C-w	     borra texto seleccionado y lo manda al buffer
+	M-w	     no borra el texto y lo manda al buffer
+
+>> Move the cursor to the Y at the start of the previous paragraph.
+>> Type C-<SPC>.  Emacs should display a message "Mark set"
+   at the bottom of the screen.
+>> Move the cursor to the n in "end", on the second line of the
+   paragraph.
+>> Type C-w.  This will kill the text starting from the Y,
+   and ending just before the n.
+   M-w NO BORRA EL TEXTO ORIGINAL
+
+
+UNDO
+C-/ several times in a row, each repetition undoes one more command.
+
+BUFFERS AND FILES
+	C-x C-f		Find file
+	C-x C-s		Save file
+	C-x s		Save some buffers
+	C-x C-b		List buffers
+	C-x b		Switch buffer
+	C-x right arrow	right cycle buffers
+	C-x left arrow		left cycle buffers
+	C-x k		Close buffer
+	C-x C-c		Quit Emacs
+	C-x 1		Delete all but one window
+	C-x u		Undo
+
+	C-x o		Move between buffers
+	C-x 1		Set single buffer
+	C-x 2		Split the buffer vertical
+	C-x 3		Split the buffer horizontal	
+
+SEARCHING
+
+The command to initiate a search is C-s for forward search, and C-r
+for reverse search.  BUT WAIT!  Don't try them now.
+
+MULTIPLE WINDOWS
+
+>> Move the cursor to this line and type C-l C-l.
+
+>> Now type C-x 2 which splits the screen into two windows.
+   Both windows display this tutorial.  The editing cursor stays in
+   the top window.
+
+>> Type C-M-v to scroll the bottom window.
+   (If you do not have a real META key, type <ESC> C-v.)
+
+>> Type C-x o ("o" for "other") to move the cursor to the bottom window.
+>> Use C-v and M-v in the bottom window to scroll it.
+   Keep reading these directions in the top window.
+
+>> Type C-x o again to move the cursor back to the top window.
+   The cursor in the top window is just where it was before.
+
+## CONFIG EMACS .emacs file ##
+emacs utiliza LIPS para poder configurarlo
+cd    #ir al directorio raiz de usurio
+emacs .emacs 		#crear el archivo de configuracion .emacs si no existe
+(setq inhibit-startup-message t)  #borra el mensaje de ayuda de inicio
+
+## HABILITAR UN SHELL EN EMACS y otras cosas mas
+para poder probar comandos o scripts sin salir o cambiar de consola
+M-x shell
+M-x telnet
+M-x ftp
+M-x man
+
+##MAJORS AND MINORS MODES
+M-x mode-name	    #c-mode, cc-mode, text-mode, etc
+    		    #estos son majors modes (puede haber solo 1)
+
+M-x minor-mode	    #overwrite-mode, auto-fill-mode
+
+#para ver los modos que tengo
+C-h a mode
