@@ -39,7 +39,7 @@ signal[end_of_start_bit:end_of_wait_bit] = 0
 offset = end_of_wait_bit
 for x in range(code_to_tx.size):
     local_offset = offset+x*3*len_lambda
-    if (code_to_tx[x] == 1):        
+    if (code_to_tx[x] == 1):
         signal[local_offset:local_offset+2*len_lambda] = 0.0
         signal[local_offset+2*len_lambda:local_offset+3*len_lambda] = 1.0
     else:
@@ -49,11 +49,11 @@ for x in range(code_to_tx.size):
 #ARMO LA SEÑAL CON RUIDO
 #pilot + start bit
 noisy_lambda = len_lambda + sigma_lambda * np.random.randn()
-end_of_start_bit = len_pilot + noisy_lambda
+end_of_start_bit = len_pilot + int(noisy_lambda)
 signaln[len_pilot:end_of_start_bit] = 1.0
 #wait bit
 noisy_lambda = len_lambda + sigma_lambda * np.random.randn()
-end_of_wait_bit = end_of_start_bit + noisy_lambda
+end_of_wait_bit = end_of_start_bit + int(noisy_lambda)
 signaln[end_of_start_bit:end_of_wait_bit] = 0
 #codes
 offset = end_of_wait_bit
@@ -62,16 +62,19 @@ for x in range(code_to_tx.size):
     noisy_lambda = len_lambda + sigma_lambda * np.random.randn()
     #local_offset = offset+x*3*noisy_lambda
     local_offset += offset
-    offset = 3*noisy_lambda
-    if (code_to_tx[x] == 1):        
-        signaln[local_offset:local_offset+2*noisy_lambda] = 0.0
-        signaln[local_offset+2*noisy_lambda:local_offset+3*noisy_lambda] = 1.0
+    offset = int(3*noisy_lambda)
+	two_noisy_lambda = int (2 * noisy_lambda)
+	three_noisy_lambda= int (3 * noisy_lambda)
+
+    if (code_to_tx[x] == 1):
+        signaln[local_offset:local_offset+two_noisy_lambda] = 0.0
+        signaln[local_offset+two_noisy_lambda:local_offset+three_noisy_lambda] = 1.0
     else:
         signaln[local_offset:local_offset+noisy_lambda] = 0.0
-        signaln[local_offset+noisy_lambda:local_offset+3*noisy_lambda] = 1.0
-        
-    
-        
+        signaln[local_offset+noisy_lambda:local_offset+three_noisy_lambda] = 1.0
+
+
+
 plt.plot(t,signal)
 plt.plot(t,signaln, 'g')
 
