@@ -147,7 +147,7 @@ data	ROC_from_quantinsti.py	/^data = pd.DataFrame(data)$/;"	v
 data	ROC_from_quantinsti.py	/^data = web.DataReader('^NSEI',data_source='yahoo',start='6\/1\/2015',end='1\/1\/2016')$/;"	v
 data	file_test.py	/^data = np.loadtxt(f, skiprows = 1)$/;"	v
 defects	pareto_chart.py	/^defects = [32, 22, 15, 5, 2]$/;"	v
-df	Stocks/get_tickers.py	/^df = get_tickers()$/;"	v
+df	Stocks/get_tickers.py	/^	df = get_tickers()$/;"	v
 end	Stocks/pandas_pdr.py	/^end = datetime.date.today()$/;"	v
 end_of_start_bit	square_codes_01.py	/^end_of_start_bit = len_pilot + int(noisy_lambda)$/;"	v
 end_of_start_bit	square_codes_01.py	/^end_of_start_bit = len_pilot + len_lambda$/;"	v

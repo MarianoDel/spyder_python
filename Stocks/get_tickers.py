@@ -90,7 +90,7 @@ def update_single_ticker (t_name):
 	else:
 		#archivo corrompido creo un nuevo archivo
 		create_single_ticker(t_name)
-			
+
 
 
 
@@ -156,6 +156,7 @@ def create_single_ticker (t_name):
 # 	# guardo info en archivo txt
 # 	apple.to_csv ("apple_csv.txt")
 
-df = get_tickers()
-print df
-update_all_tickers(df)
+if __name__ == "__main__":
+	df = get_tickers()
+	print df
+	update_all_tickers(df)
