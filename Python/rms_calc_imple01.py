@@ -18,12 +18,12 @@ import scipy.signal as signal
 
 #sample time
 #Ts = 0.00006375    #fs = 15686Hz 313 muestras
-Ts = 0.0005        #fs = 2000Hz 40 muestras
-#Ts = 0.00025       #fs = 4000Hz 80 muestras
+#Ts = 0.0005        #fs = 2000Hz 40 muestras
+Ts = 0.00025       #fs = 4000Hz 80 muestras
 
 #vector lenght
 #lenght = 313       #fs = 15686Hz 313 muestras
-lenght = 40        #fs = 2000Hz 40 muestras
+lenght = 80        #fs = 2000Hz 40 muestras
 #lenght = 320        #fs = 4000Hz 80 muestras
 
 #time vector
@@ -38,7 +38,7 @@ freq = 50
 #current vector
 imax = 1
 
-#theta_i = 1*pi/4
+#theta_i = 1*pi/8
 #theta_i = pi/2.0
 theta_i = 0
 it = imax * sin(2*pi*freq*t+theta_i)             #para probar cos phi
@@ -46,9 +46,9 @@ ax1.plot(t,it)
 ax1.set_ylabel('Current')
 
 #voltage vector
-vmax = 311
-#theta_v = 5.5*pi/4
-theta_v = 0.0
+vmax = 312
+theta_v = pi/8.0
+#theta_v = theta_i
 vt = 1 * sin(2*pi*freq*t+theta_v)
 
 vt_rect1 = (vt - 0.1) * 1.11
@@ -130,3 +130,8 @@ ax2.set_ylabel('Power D')
 
 plt.show()
 
+pactd_2_ajust = pactd_2 * 0.0453484
+pactd_error_ajust = ((pact_teorico - pactd_2_ajust) / pact_teorico) * 100
+
+print "Patd_ajust = " + str('{:.2f}'.format(pactd_2_ajust))
+print "Error Pactd_ajust respecto de " + str(pact_teorico) + "W: " + str('{:.2f}'.format(pactd_error_ajust)) + "%"
