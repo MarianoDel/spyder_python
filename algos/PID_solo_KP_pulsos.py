@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 """
 
 #constantes del PID
-KP = 8
-KI = 0
+KP = 3.2
+KI = 0.0
 KD = 0
 
 K1 = (KP + KI + KD)
@@ -26,9 +26,7 @@ error_z2 = 0
 def PID_roof (setpoint, sample, last_d):
 	global error_z1, error_z2
 
-
 	error = setpoint - sample
-
 
 	#K1
 	val_k1 = K1 * error
@@ -48,6 +46,12 @@ def PID_roof (setpoint, sample, last_d):
 	return d, error
 	# return d
 
+def PID_simple (setpoint, sample):
+
+	error = setpoint - sample
+	d = error * KP
+
+	return d, error
 
 
 
@@ -60,8 +64,8 @@ d = 224
 gan_sistema = I_Sense / d
 
 #vectores
-sp = np.ones (10)
-sp = sp * 255
+sp = np.ones (1000)
+sp = sp * 80
 
 
 dpid = np.zeros_like (sp)
@@ -88,6 +92,7 @@ for i in range(np.size(sp)):
 	if i >= 1:		#corrijo primer punto
 		dpid[i] , e [i] = PID_roof (sp[i], iout[i - 1], dpid[i - 1])
 		# dpid[i] = PID_roof (sp[i], iout[i], dpid[i - 1])
+		# dpid[i], e[i] = PID_simple (sp[i], iout[i - 1])
 
 	if dpid [i] > 500:
 		dpwm [i] = 500
@@ -97,7 +102,8 @@ for i in range(np.size(sp)):
 	if dpid [i] < 0:
 		dpwm[i] = 0
 
-	iout [i] = dpwm[i] * gan_sistema
+	# iout [i] = dpwm[i] * gan_sistema
+	iout [i] = dpid[i] * gan_sistema
 
 
 fig1, (ax1, ax2, ax3, ax4, ax5) = plt.subplots(5,1)     #API Matplotlib
