@@ -11,7 +11,7 @@ z = Symbol('z')
 
 #este es el sistema como umerador y denominador
 Kpwm = 69 / 224
-KP = 1
+KP = 2.91
 Kt = KP * Kpwm
 
 num = Kt * z
@@ -31,7 +31,7 @@ poles = [-0.308035714285714]
 
 #paso H(z) con potencias positivas b0 zn b1 zn-1, etc; a0 zn a1 zn-1
 b = np.array([Kt, 0])
-a = np.array([1, Kt])
+a = np.array([1, Kt * 0.022])
 zplane(b,a)
 
 #respuesta escalon

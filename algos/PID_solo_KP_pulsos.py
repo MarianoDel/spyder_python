@@ -64,8 +64,8 @@ d = 224
 gan_sistema = I_Sense / d
 
 #vectores
-sp = np.ones (1000)
-sp = sp * 80
+sp = np.ones (100)
+sp = sp * 100
 
 
 dpid = np.zeros_like (sp)
@@ -90,7 +90,8 @@ t = np.arange (0, np.size(sp), 1)
 for i in range(np.size(sp)):
 
 	if i >= 1:		#corrijo primer punto
-		dpid[i] , e [i] = PID_roof (sp[i], iout[i - 1], dpid[i - 1])
+		# dpid[i] , e [i] = PID_roof (sp[i], iout[i - 1], dpid[i - 1])
+		dpid[i] , e [i] = PID_roof (sp[i], iout[i - 1] * 0.022, dpid[i - 1])	#corregido con KB 0.022
 		# dpid[i] = PID_roof (sp[i], iout[i], dpid[i - 1])
 		# dpid[i], e[i] = PID_simple (sp[i], iout[i - 1])
 
@@ -102,8 +103,8 @@ for i in range(np.size(sp)):
 	if dpid [i] < 0:
 		dpwm[i] = 0
 
-	# iout [i] = dpwm[i] * gan_sistema
-	iout [i] = dpid[i] * gan_sistema
+	iout [i] = dpwm[i] * gan_sistema
+	# iout [i] = dpid[i] * gan_sistema
 
 
 fig1, (ax1, ax2, ax3, ax4, ax5) = plt.subplots(5,1)     #API Matplotlib
