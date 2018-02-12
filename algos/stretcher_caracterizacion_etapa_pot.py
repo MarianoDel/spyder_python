@@ -3,7 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sympy import *
-from scipy.signal import lti, step, bode, zpk2tf, tf2zpk, step2, cont2discrete, dstep
+from scipy.signal import lti, step, bode, zpk2tf, tf2zpk, step2, cont2discrete, dstep, freqz, freqs
 
 
 """
@@ -82,16 +82,23 @@ plt.show()
 
 ### Desde aca sistema Digital
 ### Convierto Forward Euler
-num_d, den_d, td = cont2discrete((num_planta, den_planta), 0.00066, method='euler')
-print ('Numerador Digital')
-print (num_d)
-print ('Denominador Digital')
-print (den_d)
+Fsampling = 1500
+Tsampling = 1 / Fsampling
+num_d1, den_d1, td = cont2discrete((num_planta, den_planta), Tsampling, method='euler')
+
+#normalizo con lti
+planta_d1 = lti(num_d1, den_d1)
+print ('Planta Digital sys 1')
+print (str(planta_d1.num), '/(', str(planta_d1.den), ')')
+# print ('Numerador Digital sys 1')
+# print (planta_d1.num)
+# print ('Denominador Digital sys 1')
+# print (planta_d1.den)
 
 
 #respuesta escalon
 t = np.arange (0, 0.1, td)
-tout, yout = dstep([num_d, den_d, td], t=t)
+tout, yout = dstep([planta_d1.num, planta_d1.den, td], t=t)
 yout1 = np.transpose(yout)
 yout0 = yout1[0]
 yout = yout0[:tout.size]
@@ -106,9 +113,18 @@ plt.stem(tout,yout)
 plt.show()
 
 ###otro mas ajustado
-num_d = [0.091, 0.091]
-den_d = [1, -0.8861]
-tout, yout = dstep([num_d, den_d, td], t=t)
+num_d2 = [0.091, 0.091]
+den_d2 = [1, -0.8861]
+
+#normalizo con lti
+planta_d2 = lti(num_d2, den_d2)
+
+print ('Numerador Digital sys 2')
+print (planta_d2.num)
+print ('Denominador Digital sys 2')
+print (planta_d2.den)
+
+tout, yout = dstep([planta_d2.num, planta_d2.den, td], t=t)
 yout1 = np.transpose(yout)
 yout0 = yout1[0]
 yout = yout0[:tout.size]
@@ -120,4 +136,36 @@ plt.title('digital Step Response')
 
 # print (yout)
 plt.stem(tout,yout)
+plt.show()
+
+# en frecuencia
+# w, h = freqz(num_d, den_d,worN=np.logspace(0, 4, 1000))
+w, h = freqz(planta_d2.num, planta_d2.den)
+fig, (ax1, ax2) = plt.subplots(2,1)
+
+ax1.semilogx(w/(2*pi)*Fsampling, 20 * np.log10(abs(h)), 'b')
+ax1.set_ylabel('Amplitude P D2 [dB]', color='b')
+ax1.set_xlabel('Frequency [Hz]')
+
+angles = np.unwrap(np.angle(h))
+ax2.semilogx (w/(2*pi)*Fsampling, angles*180/pi, 'r-', linewidth="1")
+ax2.set_title('Angle')
+
+plt.tight_layout()
+plt.show(block=False)
+
+# en frecuencia segundo funcion transferencia dgital
+# w, h = freqz(num_d, den_d,worN=np.logspace(0, 4, 1000))
+w, h = freqz(planta_d1.num, planta_d1.den)
+fig, (ax1, ax2) = plt.subplots(2,1)
+
+ax1.semilogx(w/(2*pi)*Fsampling, 20 * np.log10(abs(h)), 'b')
+ax1.set_ylabel('Amplitude P D1 [dB]', color='b')
+ax1.set_xlabel('Frequency [Hz]')
+
+angles = np.unwrap(np.angle(h))
+ax2.semilogx (w/(2*pi)*Fsampling, angles*180/pi, 'r-', linewidth="1")
+ax2.set_title('Angle')
+
+plt.tight_layout()
 plt.show()
