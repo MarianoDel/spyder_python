@@ -16,18 +16,18 @@ from math import pi, sin
 
 #Elementos de Hardware que pueden ser moviles
 #Caracteristica de la bobina
-# L = 141e-3
-# R = 24
+L = 141e-3
+R = 24
 
 #bobina stretcher
-L = 420e-3
-R = 46
+# L = 420e-3
+# R = 46
 
 #Alimentacion del PWM
-# Vpwm = 35
+Vpwm = 35
 
 #Alimentacion del PWM stretcher
-Vpwm = 192
+# Vpwm = 192
 
 #Elementos del Hardware mayormente fijos en la placa
 Rsense = 0.33
