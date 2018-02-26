@@ -173,11 +173,12 @@ C-x r l lista bookmarks
 
 // COMMENTS //
 M-; comenta al final de una linea o si es hay bloque marcado multiples lineas
+C-/ con una funcion propia en .emacs comenta linea o multiples lineas
 
 // SEARCH //
 C-s busca hacia adelante, salta con multiples C-s
 C-r busca hacia atras
-C-s C-w busca hacia adelabte lo marcado por el punto, para incluir mas expresiones C-w
+C-s C-w busca hacia adelante lo marcado por el punto, para incluir mas expresiones C-w
 C-s M-p busca entradas anteriores M-n y posteriores
 
 M-s .	Command: isearch-forward-symbol-at-point
@@ -197,8 +198,9 @@ M-s h u	Command: unhighlight-regexp
 
 //M-% find and replace
 
-//Basic file management with Dired
+#### FILE MANAGER WITH DIRED ####
 //3 formas de arrancarlo
+M-x dired
 C-x d arranca Dired en el directorio seleccionado
 C-x 4 d arranca Dired en el directorio seleccionado en otra ventana
          C-x C-f selecciona directorio para entrar con Dired
@@ -211,6 +213,10 @@ C-s buscar con I-search
 f, e, RET open file at pointer
 o abrir en otra ventana
 C-o abrir en otra ventana pero no ir a la ventana
+
+d marca el archivo para borrarlo
+u desmarca archivos
+x ejecuta el borrado
 
 
 #### USO DE EMACS # OTRO MAS ####### http://pragmaticemacs.com/emacs/multiple-cursors/
