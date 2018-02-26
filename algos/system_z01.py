@@ -9,7 +9,7 @@ import numpy as np
 
 z = Symbol('z')
 
-#este es el sistema como umerador y denominador
+#este es el sistema como numerador y denominador
 Kpwm = 69 / 224
 KP = 2.91
 Kt = KP * Kpwm

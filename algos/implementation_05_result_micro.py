@@ -17,10 +17,12 @@ k = fs / fo
 
 #largo del vector de muestras
 lenght = 10*k
+#normalizo a int
+lenght = int(lenght)
 
 #vector seno en unsigned short
 
-print k
+print (k)
 #time vector
 t = np.arange (0, lenght * Ts, Ts)
 

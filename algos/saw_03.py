@@ -23,15 +23,15 @@ Zt = Zm * Zp / (Zm + Zp)
 
 num_z, den_z = fraction(Zt)
 
-print "Zt = "
-print cancel(Zt)
-print num_z
-print den_z
+print ("Zt = ")
+print (cancel(Zt))
+print (num_z)
+print (den_z)
 
 H = 1/s * (s**2 * Lm * Cm + s * Rm * Cm + 1) / (s**2 * Lm * Cm * Cp + s * Rm * Cm * Cp + Cm + Cp)
 
-print "H = "
-print factor(H)
+print ("H = ")
+print (factor(H))
 
 
 #convierto a lti con Lm = 86uHy y Cp 2.3pF

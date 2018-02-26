@@ -18,6 +18,7 @@ clf()# clear the figure - "#" is the comment symbol in Python
 #voltage vector
 cyclesize = length / cycles
 quartercycle = cyclesize / 4
+quartercycle = int(quartercycle)
 
 vsense = np.zeros(length)
 

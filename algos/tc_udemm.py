@@ -40,23 +40,23 @@ def sumo_sistemas(sys3, sys4):
 #syst realimentado = (Nalpha * Dbeta) / (Dalpha * Dbeta + Nalpha * Nbeta)
 def realimento (alpha, beta):
 
-	if not isinstance(alpha, signal.lti):
-	   alpha = signal.lti(*alpha)
+    if not isinstance(alpha, signal.lti):
+        alpha = signal.lti(*alpha)
 
-	if not isinstance(beta, signal.lti):
-	   beta = signal.lti(*beta)
+    if not isinstance(beta, signal.lti):
+        beta = signal.lti(*beta)
 
-	#numerador sistema
-	num_sys = np.polymul(alpha.num, beta.den)
+    #numerador sistema
+    num_sys = np.polymul(alpha.num, beta.den)
 
-	#armo el denominador
-	den_sys1 = np.polymul(alpha.den, beta.den)
-	den_sys2 = np.polymul(alpha.num, beta.num)
-	den_sys = np.polyadd(den_sys1, den_sys2)
+    #armo el denominador
+    den_sys1 = np.polymul(alpha.den, beta.den)
+    den_sys2 = np.polymul(alpha.num, beta.num)
+    den_sys = np.polyadd(den_sys1, den_sys2)
 
-	#convierto nuevamente a TF
-	sys = signal.lti(num_sys, den_sys)
-	return sys
+    #convierto nuevamente a TF
+    sys = signal.lti(num_sys, den_sys)
+    return sys
 
 
 ### FUNCONES DE INTERNET ########
@@ -64,18 +64,18 @@ from scipy import signal
 import sympy as sy
 
 def lti_to_sympy(lsys, symplify=True):
-	""" Convert Scipy's LTI instance to Sympy expression """
-	s = sy.Symbol('s')
-	G = sy.Poly(lsys.num, s) / sy.Poly(lsys.den, s)
-	return sy.simplify(G) if symplify else G
+    """ Convert Scipy's LTI instance to Sympy expression """
+    s = sy.Symbol('s')
+    G = sy.Poly(lsys.num, s) / sy.Poly(lsys.den, s)
+    return sy.simplify(G) if symplify else G
 
 def sympy_to_lti(xpr, s=sy.Symbol('s')):
-	""" Convert Sympy transfer function polynomial to Scipy LTI """
-	num, den = sy.simplify(xpr).as_numer_denom()  # expressions
-	p_num_den = sy.poly(num, s), sy.poly(den, s)  # polynomials
-	c_num_den = [sy.expand(p).all_coeffs() for p in p_num_den]  # coefficients
-	l_num, l_den = [sy.lambdify((), c)() for c in c_num_den]  # convert to floats
-	return signal.lti(l_num, l_den)
+    """ Convert Sympy transfer function polynomial to Scipy LTI """
+    num, den = sy.simplify(xpr).as_numer_denom()  # expressions
+    p_num_den = sy.poly(num, s), sy.poly(den, s)  # polynomials
+    c_num_den = [sy.expand(p).all_coeffs() for p in p_num_den]  # coefficients
+    l_num, l_den = [sy.lambdify((), c)() for c in c_num_den]  # convert to floats
+    return signal.lti(l_num, l_den)
 
 # #ejemplo de uso
 # pG, pH, pGH, pIGH = sy.symbols("G, H, GH, IGH")  # only needed for displaying
@@ -104,3 +104,64 @@ def sympy_to_lti(xpr, s=sy.Symbol('s')):
 # print("Back to LTI:")
 # lti_IGH = sympy_to_lti(IGHs)
 # print(lti_IGH)
+
+
+#### COMO CLASE DERIVADA de lti tf ####
+from scipy.signal.ltisys import TransferFunction as TransFun
+from numpy import polymul,polyadd
+
+class ltimul(TransFun):
+    def __neg__(self):
+        return ltimul(-self.num,self.den)
+
+    def __mul__(self,other):
+        if type(other) in [int, float]:
+            return ltimul(self.num*other,self.den)
+        elif type(other) in [TransFun, ltimul]:
+            numer = polymul(self.num,other.num)
+            denom = polymul(self.den,other.den)
+            return ltimul(numer,denom)
+
+    def __truediv__(self,other):
+        if type(other) in [int, float]:
+            return ltimul(self.num,self.den*other)
+        if type(other) in [TransFun, ltimul]:
+            numer = polymul(self.num,other.den)
+            denom = polymul(self.den,other.num)
+            return ltimul(numer,denom)
+
+    def __rtruediv__(self,other):
+        if type(other) in [int, float]:
+            return ltimul(other*self.den,self.num)
+        if type(other) in [TransFun, ltimul]:
+            numer = polymul(self.den,other.num)
+            denom = polymul(self.num,other.den)
+            return ltimul(numer,denom)
+
+    def __add__(self,other):
+        if type(other) in [int, float]:
+            return ltimul(polyadd(self.num,self.den*other),self.den)
+        if type(other) in [TransFun, type(self)]:
+            numer = polyadd(polymul(self.num,other.den),polymul(other.den,self.num))
+            denom = polymul(self.den,other.den)
+            return ltimul(numer,denom)
+
+    def __sub__(self,other):
+        if type(other) in [int, float]:
+            return ltimul(polyadd(self.num,-self.den*other),self.den)
+        if type(other) in [TransFun, type(self)]:
+            numer = polyadd(polymul(self.num,other.den),-polymul(other.den,self.num))
+            denom = polymul(self.den,other.den)
+            return ltimul(numer,denom)
+
+    def __rsub__(self,other):
+        if type(other) in [int, float]:
+            return ltimul(polyadd(-self.num,self.den*other),self.den)
+        if type(other) in [TransFun, type(self)]:
+            numer = polyadd(polymul(other.num,self.den),-polymul(self.den,other.num))
+            denom = polymul(self.den,other.den)
+            return ltimul(numer,denom)
+
+   # sheer laziness: symmetric behaviour for commutative operators
+    __rmul__ = __mul__
+    __radd__ = __add__

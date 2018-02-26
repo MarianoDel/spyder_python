@@ -26,7 +26,7 @@ freq = np.arange (10e6, 10e9, 10e6)  #de 40 a 1000MHz cada 10MHz
 
 H = 1/s * (s**2 * Lm * Cm + s * Rm * Cm + 1) / (s**2 * Lm * Cm * Cp + s * Rm * Cm * Cp + Cm + Cp)
 
-print H.simplify()
+print (H.simplify())
 
 #convierto a lti con Lm = 86uHy y Cp 2.3pF
 #num = [1.29e-16, 3.9e-11, 1]

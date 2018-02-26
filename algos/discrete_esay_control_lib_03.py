@@ -80,7 +80,7 @@ plt.draw()
 
 plt.figure(6)
 tin = np.arange(0.0, 0.005, 0.0001)
-Tout, yout2 = ct.step_response(Gfeed, T=tin, X0=0.0, input=None, output=None, transpose=False,)     #extrañamente siempre devuelve mas puntos en yout que en Tout
+Tout, yout2 = ct.step_response(Gfeed, T=tin, X0=0.0, input=None, output=None, transpose=False,)
 yout1 = np.transpose(yout2)
 yout0 = yout1[0]
 #yout = yout0[:50]
