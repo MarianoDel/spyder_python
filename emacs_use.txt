@@ -224,6 +224,9 @@ x ejecuta el borrado
 // MULTIPLE CURSORS //
 https://github.com/magnars/multiple-cursors.el
 M-x mc/...
+ej. pinto o marco un area (palabra)
+M-x mc/mark-more-like-this-extend  y voy marcando con las flechas
+C-g deja de marcar y pasa a cursores que puedo usar todos juntos!
 
 #### USO GNU Global, funciona muy bien en linea de comandos!!! ####
 https://www.gnu.org/software/global/globaldoc_toc.html
