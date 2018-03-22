@@ -105,6 +105,33 @@ def sympy_to_lti(xpr, s=sy.Symbol('s')):
 # lti_IGH = sympy_to_lti(IGHs)
 # print(lti_IGH)
 
+#### PID analogico a PID digital
+# def PID_analog_digital (kp=1, ki=1, kd=1, ts=1):
+#     #de analogico a digital
+#     fs = 1 / ts
+#     print ("kp: %d, ki: %d, kd: %d", kp,ki,kd)
+
+#     s = sy.Symbol('s')
+#     pid = kp + ki/s + kd*s
+#     pid.roots
+    
+#     ki_dig = ki / fs
+#     kp_dig = kp - ki_dig / 2
+#     kd_dig = kd * fs
+
+#     k1 = kp_dig + ki_dig + kd_dig
+#     k2 = -kp_dig - 2*kd_dig
+#     k3 = kd_dig
+
+#     print ("k1: %d, k2: %d, k3: %d",k1,k2,k3)
+#     return k1, k2, k3
+
+
+
+
+
+
+
 
 #### COMO CLASE DERIVADA de lti tf ####
 from scipy.signal.ltisys import TransferFunction as TransFun

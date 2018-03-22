@@ -6,8 +6,9 @@ from sympy import *
 from scipy.signal import lti, step, bode, zpk2tf, tf2zpk, step2, cont2discrete, dstep, freqz, freqs, dlti, TransferFunction, dbode
 from tc_udemm import sympy_to_lti, lti_to_sympy
 
+
 """
-	Analisis Etapa Potencia Stretcher Magneto  - Analogica y Digital -
+        Analisis Etapa Potencia Stretcher Magneto  - Analogica y Digital -
          para los valores usa los siguientes scripts previos:
          stretcher_caracterizacion_etapa_pot.py  ;solo la etapa de potencia (planta) analogica y digital
          stretcher_pid01.py stretcher_pid02.py   ;resultados de la planta con PID distintos solo analog
@@ -32,8 +33,8 @@ poles = [0]	#polo en w = 1000
 # poles = [-4.440 + 4.440j, -4.440 - 4.440j, -1.083 + 0.0j]
 # zeros = [100 + 0.0j, 0.0 + 0.0j, 0.0 + 0.0]
 # zeros = [-100 + 0.0j]	#zero en w = 100
-zeros = [-100]
-k = 10
+zeros = [-100, -1000]
+k = 0.01
 b, a = zpk2tf(zeros, poles, k)
 
 f_eval = np.arange(0.1, 1000, 0.5)
@@ -49,9 +50,13 @@ ax2.set_title('Phase')
 plt.tight_layout()
 plt.show()
 
-
-
 controller = lti(b, a)   #normalizo
+
+pid_poly = lti_to_sympy(controller)
+print ("Raices del controlador:")
+print (roots(pid_poly))
+# k1, k2, k3 = PID_analog_digital(
+
 
 ### Convierto Controlador por Forward Euler
 Fsampling = 1500

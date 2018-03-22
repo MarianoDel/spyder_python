@@ -15,6 +15,13 @@ C-x o		//Switch to Other Window
 C-x 1		//Close Other Window
 C-x 2		//Split the Screen Horizontally
 C-x 3           //Split vertical
+                //custom movements
+
+C-x <up>        //shrink-window
+C-x <down>      //enlarge-window
+C-x <left>      //shrink-window-horizontally
+C-x <right>     //enlarge-window-horizontally
+
 
 ### Edicion de Texto ###
 C-space	    //hace la primera marca para seleccionar texto
@@ -122,28 +129,16 @@ C-j	//activa el modo
 
 #### USO DE EMACS # OTRO MAS ####### http://tuhdo.github.io/emacs-tutor.html
 
-C-x C-s guarda el buffer
-C-x s gurda varios buffers preguntando en cada uno
-C-x C-w guardar con otro nombre
-
 C-x i pega una archivo dentro de este archivo, ej test1.txt
 (switch-to-buffer (test2.txt))
 (buffer-size)
 
-M-x find-file-at-point abre el archivo debajo del cursor (escrtio en el text)
+M-x find-file-at-point abre el archivo debajo del cursor (escrito en el text)
 test1.txt                       
 
 M-x goto-line   ...  2
 M-x linum-mode       muestra el numero de lineas
 
-
-ESC 5n  ... escribe nnnnn
-M-f avanza una palabra
-M-b retrocede una palabra
-M-e adelenta un parrafo
-M-a retrocede un parrafo
-M-< principio de archivo
-M-> final de archivo
 
 M-g g    //saltar a linea particular
 
@@ -151,8 +146,6 @@ C-M-f forward-sexp adelanta en una expresion balanceada
 C-M-b backward-sexp
 C-M-k kill balanced expression
 C-M-SPC mark-sexp
-
-
 
 C-x C-+ agrenada el tamaño de la letra
 C-x C-- achica el tamaño de la letra
@@ -217,39 +210,25 @@ C-o abrir en otra ventana pero no ir a la ventana
 d marca el archivo para borrarlo
 u desmarca archivos
 x ejecuta el borrado
+#### END DIRED ####
 
+#### IDO-MODE ####
+en .emacs
+(require 'ido)
+   (ido-mode t)
 
-#### USO DE EMACS # OTRO MAS ####### http://pragmaticemacs.com/emacs/multiple-cursors/
+//cuando trae problemas, como para crear archivo nuevo,
+C-j crea archivo con el nombre elegido (no el recomendado)
+C-f vuelve al modo find-file (without-ido-mode)
+#### END IDO-MODE ####
 
-// MULTIPLE CURSORS //
+#### MULTIPLE CURSORS ####
 https://github.com/magnars/multiple-cursors.el
 M-x mc/...
 ej. pinto o marco un area (palabra)
 M-x mc/mark-more-like-this-extend  y voy marcando con las flechas
 C-g deja de marcar y pasa a cursores que puedo usar todos juntos!
-
-#### USO GNU Global, funciona muy bien en linea de comandos!!! ####
-https://www.gnu.org/software/global/globaldoc_toc.html
-https://github.com/leoliu/ggtags
-//ver despues para python con pygments
-bajo paquete ggtags de melpa-stable
-
-
-M-x ggtags-mode activa el modo o lo desactiva
-M-x ggtags- TAB funciones disponibles
-M-x ggtags-create-tags si el directorio-proyecto no tiene GTAGS
-M-x ggtags-find-file nombre.c busca y abre el archivo dentro del proyecto
-si en cualquier busqueda hay varios archivos/definiciones/declaraciones M-n M-p me mueve dentro de esas
-
-M-. salta entre definiciones y declaraciones
-M-* vuelve atras los saltos
-
-
-
-
-
-
-
+#### END MULTIPLE CURSORS ####
 
 
 ### Funcionalidad de paquetes
@@ -267,3 +246,74 @@ M-x list-packages      //'i' para marcar 'u' desmarcar 'x' hacer install
 better-defaults
 material-theme
 
+
+#### FUNCIONALIDADES CC-MODE (major mode) ####
+#Indentation
+TAB en un renglon o region
+C-M-q (c-indent-exp) //Indents an entire balanced brace or parenthesis expression
+C-c C-q (c-indent-defun) //Indents the entire top-level function
+
+C-M-h (c-mark-function)
+
+#Comments (overrided)
+C-/  linea o region seleccionada comenta en c++ "//"
+
+#Movements Command
+C-M-a (c-beginning-of-defun)
+C-M-e (c-end-of-defun)
+
+M-a (c-beginning-of-statement)
+M-e (c-end-of-statement)
+
+C-c C-u (c-up-conditional)
+M-x c-up-conditional-with-else
+M-x c-down-conditional
+M-x c-down-conditional-with-else
+C-c C-p (c-backward-conditional)
+C-c C-n (c-forward-conditional)
+M-x c-backward-into-nomenclature
+M-x c-forward-into-nomenclature
+
+#Styles
+C-c . style-name <RET>
+
+#HideIfDef minor-mode
+M-x hide-ifdef-mode
+M-x hide-ifdefs         (oculta las definiciones que no son validas)
+
+C-c @           Prefix Command
+C-c @ C-d       hide-ifdef-block
+C-c @ C-q       hide-ifdef-toggle-read-only
+C-c @ C-s       show-ifdef-block
+C-c @ C-w       hide-ifdef-toggle-shadowing
+C-c @ D         hide-ifdef-set-define-alist
+C-c @ U         hide-ifdef-use-define-alist
+C-c @ d         hide-ifdef-define
+C-c @ h         hide-ifdefs
+C-c @ s         show-ifdefs
+C-c @ u         hide-ifdef-undef
+
+
+#### USO GNU Global, funciona muy bien en linea de comandos!!! ####
+M-x ggtags-mode activa el modo o lo desactiva
+M-x ggtags- TAB funciones disponibles
+M-x ggtags-create-tags si el directorio-proyecto no tiene GTAGS
+M-x ggtags-find-file nombre.c busca y abre el archivo dentro del proyecto
+si en cualquier busqueda hay varios archivos/definiciones/declaraciones M-n M-p me mueve dentro de esas
+
+M-. salta entre definiciones y declaraciones
+M-* vuelve atras los saltos
+
+#docs gnu-global
+#https://www.gnu.org/software/global/globaldoc_toc.html
+#https://github.com/leoliu/ggtags
+#ver despues para python con pygments
+#bajo paquete ggtags de melpa-stable
+
+
+### DOCS GENERALES
+http://ergoemacs.org/emacs/effective_emacs.html
+https://www.emacswiki.org/emacs/IndentingC
+https://www.gnu.org/software/emacs/manual/
+https://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
+http://pragmaticemacs.com/emacs/multiple-cursors/
