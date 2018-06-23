@@ -5,6 +5,14 @@
 #https://github.com/wilsonfreitas/awesome-quant
 #https://github.com/pydata/pandas-datareader
 
+#### ver tambien
+# https://www.learndatasci.com/tutorials/python-finance-part-2-intro-quantitative-trading-strategies/
+# https://www.learndatasci.com/tutorials/python-finance-part-yahoo-finance-api-pandas-matplotlib/
+
+#### para matplotlib
+# http://pbpython.com/effective-matplotlib.html
+
+
 #from pandas.io import data, wb # becomes	ESTO NO VA MAS
 from pandas_datareader import data, wb
 import datetime

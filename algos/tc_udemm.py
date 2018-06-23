@@ -32,7 +32,7 @@ def sumo_sistemas(sys3, sys4):
     sys = signal.lti(num, den)
     return sys
 
-#Realimento con Multiple Fedback, hay que tener en cuenta cual es la
+#Realimento con Multiple Feedback, hay que tener en cuenta cual es la
 #realimentacion, tipicamente es 1
 #si alpha es el lazo forward y beta es el lazo backwards... N -> numerador; D -> denominador
 #alpha = Nalpha / Dalpha

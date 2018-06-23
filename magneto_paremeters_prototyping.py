@@ -12,19 +12,38 @@ import math
 # inductance = 400e-3
 # current_limit = 0.887
 
-resistance = 3.0
-inductance = 18.e-3
-current_limit = 8.0
+resistance = 3.5
+inductance = 19.e-3
+current_limit = 3.5
 
 # resistance = 10
 # inductance = 78.2e-3
 # current_limit = 2
 
 #ELEGIR LOS PARAMETROS DE LA SEÑAL (seria del 100%, de otra manera bajar current_limit)
-rising_time = 3e-3
-maintenance_time = 10e-3
-falling_time = 3e-3
-stop_time = 6e-3
+### el magneto actualmente manda lo siguiente:
+    # def Envio_triangular_10 (self):
+    #         self.s.Write("signal,070,070,0000,0049,0001,0001,0049,0000,0000,1\r\n")
+
+    # def Envio_triangular_30 (self):
+    #         self.s.Write("signal,070,070,0000,0016,0001,0001,0015,0000,0000,1\r\n")
+
+    # def Envio_triangular_60 (self):
+    #         self.s.Write("signal,070,070,0000,0007,0001,0001,0007,0000,0000,1\r\n")
+
+    # def Envio_cuadrada_10 (self):
+    #         self.s.Write("signal,070,070,0000,0001,0049,0001,0049,0000,0000,1\r\n")
+
+    # def Envio_cuadrada_30 (self):
+    #         self.s.Write("signal,070,070,0000,0001,0016,0001,0015,0000,0000,1\r\n")
+
+    # def Envio_cuadrada_60 (self):
+    #         self.s.Write("signal,070,070,0000,0001,0007,0001,0007,0000,0000,1\r\n")
+            
+rising_time = 1e-3
+maintenance_time = 7e-3
+falling_time = 1e-3
+stop_time = 7e-3
 period = rising_time + maintenance_time + falling_time + stop_time
 
 #PARAMETROS FIJOS EN LA PLACA DE HARDWARE DEFAULT en V1.0

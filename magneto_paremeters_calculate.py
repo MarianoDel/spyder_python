@@ -8,9 +8,9 @@ import math
 
 #ELEGIR LOS PARAMETROS DE ANTENNA Y MAXIMA CORRIENTE
 #Resistance, Inductance, Current limit
-resistance = 32
-inductance = 230e-3
-current_limit = 1.2
+resistance = 31.1
+inductance = 150e-3
+current_limit = 1.1
 
 # resistance = 10.6
 # inductance = 78.2e-3
@@ -21,10 +21,10 @@ current_limit = 1.2
 # current_limit = 3.5
 
 #ELEGIR LOS PARAMETROS DE LA SEÑAL (seria del 100%, de otra manera bajar current_limit)
-rising_time = 3e-3
-maintenance_time = 3e-3
-falling_time = 3e-3
-stop_time = 6e-3
+rising_time = 1e-3
+maintenance_time = 7e-3
+falling_time = 1e-3
+stop_time = 7e-3
 period = rising_time + maintenance_time + falling_time + stop_time
 
 #PARAMETROS FIJOS EN LA PLACA DE HARDWARE DEFAULT en V1.0
