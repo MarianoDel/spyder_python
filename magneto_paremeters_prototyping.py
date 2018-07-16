@@ -8,13 +8,13 @@ import math
 
 #ELEGIR LOS PARAMETROS DE ANTENNA Y MAXIMA CORRIENTE
 #Resistance, Inductance, Current limit
-# resistance = 48.2
-# inductance = 400e-3
-# current_limit = 0.887
+resistance = 48.2
+inductance = 400e-3
+current_limit = 0.9
 
-resistance = 3.5
-inductance = 19.e-3
-current_limit = 3.5
+# resistance = 3.5
+# inductance = 19.e-3
+# current_limit = 3.5
 
 # resistance = 10
 # inductance = 78.2e-3
@@ -41,16 +41,16 @@ current_limit = 3.5
     #         self.s.Write("signal,070,070,0000,0001,0007,0001,0007,0000,0000,1\r\n")
             
 rising_time = 1e-3
-maintenance_time = 7e-3
+maintenance_time = 49e-3
 falling_time = 1e-3
-stop_time = 7e-3
+stop_time = 49e-3
 period = rising_time + maintenance_time + falling_time + stop_time
 
 #PARAMETROS FIJOS EN LA PLACA DE HARDWARE DEFAULT en V1.0
 resistance_discharge = 1175.0
 capacitance_discharge = 100e-6		#Farads
 tau_discharge = 0.1175 				#RC
-FUENTE_40V = 40.0					#40V y 200V son lo que esta hardcodeado
+FUENTE_40V = 48.0					#40V y 200V son lo que esta hardcodeado
 FUENTE_200V = 200.0
 RSNUBBER_POWER_MAX = 15.0
 
