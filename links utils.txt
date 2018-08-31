@@ -1,8 +1,0 @@
-#distribuciones en scipy
-http://www.johndcook.com/blog/distributions_scipy/
-
-#referencias numpy
-https://docs.scipy.org/doc/numpy/reference/index.html
-
-#referencias de programacion python
-https://www.tutorialspoint.com/python/python_tuples.htm
