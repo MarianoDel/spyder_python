@@ -8,9 +8,9 @@ import math
 
 #ELEGIR LOS PARAMETROS DE ANTENNA Y MAXIMA CORRIENTE
 #Resistance, Inductance, Current limit
-resistance = 48.2
-inductance = 400e-3
-current_limit = 0.9
+resistance = 23.85
+inductance = 141.6e-3
+current_limit = 1.1
 
 # resistance = 3.5
 # inductance = 19.e-3
@@ -41,9 +41,9 @@ current_limit = 0.9
     #         self.s.Write("signal,070,070,0000,0001,0007,0001,0007,0000,0000,1\r\n")
             
 rising_time = 1e-3
-maintenance_time = 49e-3
+maintenance_time = 16e-3
 falling_time = 1e-3
-stop_time = 49e-3
+stop_time = 15e-3
 period = rising_time + maintenance_time + falling_time + stop_time
 
 #PARAMETROS FIJOS EN LA PLACA DE HARDWARE DEFAULT en V1.0
