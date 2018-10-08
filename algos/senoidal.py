@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 muestras = 150
 Vmax = 465
 # fase = -np.pi/2
-fase = np.pi
-# fase = 0
+# fase = np.pi
+fase = 0
 
 s_sen = np.zeros(muestras)
 
@@ -41,12 +41,3 @@ for i in range(np.size(s_sen_enteros)):
         
 print ("};")
 
-# for i in range(np.size(s_sen_enteros)):
-#     if i < ((linea * cant_por_linea) - 1):
-#         if i == (np.size(s_sen_enteros) - 1):
-#             print (str(s_sen_enteros[i]),end='')
-#         else:                
-#             print (str(s_sen_enteros[i]) + ",",end='')
-#     else:
-#         print (str(s_sen_enteros[i]) + ",\n",end='')
-#         linea += 1

@@ -16,22 +16,22 @@ from math import pi, sin
 
 #Elementos de Hardware que pueden ser moviles
 #Caracteristica de la bobina
-L = 141e-3
-R = 24
+# L = 141e-3
+# R = 24
 
 #bobina stretcher
-# L = 420e-3
-# R = 46
+L = 420e-3
+R = 46
 
 #Alimentacion del PWM
-Vpwm = 35
+# Vpwm = 35
 
 #Alimentacion del PWM stretcher
-# Vpwm = 192
+Vpwm = 192
 
 #Elementos del Hardware mayormente fijos en la placa
 Rsense = 0.33
-Aopamp = 1 + 2200 / 1000		#hace que la salida sea aprox. 1V/1A
+Aopamp = 1 + 560 / 1000		#hace que la salida sea aprox. 0.51V/1A
 
 #resultados de la etapa de potencia
 s = Symbol('s')
@@ -55,9 +55,9 @@ print ('Numerador Planta Sympy: ' + str(planta.num))
 print ('Denominador Planta Sympy: ' + str(planta.den))
 
 z, p, k = tf2zpk(planta.num, planta.den)
-print ('Ceros: ' + str(planta.zeros))
-print ('Polos: ' + str(planta.poles))
-print ('K: ' + str(k))
+print ('Planta Ceros: ' + str(planta.zeros))
+print ('Planta Polos: ' + str(planta.poles))
+print ('Planta K: ' + str(k))
 
 ### Desde aca utilizo ceros y polos que entrego sympy
 
@@ -68,7 +68,7 @@ w, mag, phase = bode(planta, freq)
 
 fig, (ax1, ax2) = plt.subplots(2,1)
 ax1.semilogx (w/(2*pi), mag, 'b-', linewidth="1")
-ax1.set_title('Magnitude')
+ax1.set_title('Magnitude de la planta')
 
 ax2.semilogx (w/(2*pi), phase, 'r-', linewidth="1")
 ax2.set_title('Phase')
@@ -81,20 +81,35 @@ plt.show()
 ### para errores menores a 2% ganancia 34dB
 ### busco BW 1000Hz para escalones en 1ms
 
-poles = [-6280]	#polo en w = 1000
-# poles = [-4.440 + 4.440j, -4.440 - 4.440j, -1.083 + 0.0j]
-# zeros = [100 + 0.0j, 0.0 + 0.0j, 0.0 + 0.0]
-# zeros = [-100 + 0.0j]	#zero en w = 100
-zeros = [-12560]
-k = 10
-controller = zpk2tf(zeros, poles, k)
+# poles = []	
+# # poles = [-6280]	#polo en w = 1000
+# # poles = [-4.440 + 4.440j, -4.440 - 4.440j, -1.083 + 0.0j]
+# # zeros = [100 + 0.0j, 0.0 + 0.0j, 0.0 + 0.0]
+# # zeros = [-100 + 0.0j]	#zero en w = 100
+# # zeros = [-12560]
+# zeros = [628]
+# k = 1
+# controller = zpk2tf(zeros, poles, k)
+
+### Controlador por lazo PID
+### para errores menores a 2% ganancia 34dB
+### busco BW 1000Hz para escalones en 1ms
+### para un sistema PI queda 1/s * Ki * (s / wn + 1)
+### wn del cero es Ki/Kp
+kp = 10
+ki = 62.8
+kd = 0
+controller_sim = kp + ki / s + kd * s
+controller = sympy_to_lti(controller_sim)
+print ('PID Sympy: ' + str(controller_sim))
+
 
 w, mag, phase = bode(controller, freq)
 
 fig.clear()
 fig, (ax1, ax2) = plt.subplots(2,1)
 ax1.semilogx (w/(2*pi), mag, 'b-', linewidth="1")
-ax1.set_title('Magnitude')
+ax1.set_title('Magnitude Controller')
 
 ax2.semilogx (w/(2*pi), phase, 'r-', linewidth="1")
 ax2.set_title('Phase')
@@ -110,7 +125,7 @@ w, mag, phase = bode(open_loop, freq)
 fig.clear()
 fig, (ax1, ax2) = plt.subplots(2,1)
 ax1.semilogx (w/(2*pi), mag, 'b-', linewidth="1")
-ax1.set_title('Magnitude')
+ax1.set_title('Magnitude Open Loop Tf')
 
 ax2.semilogx (w/(2*pi), phase, 'r-', linewidth="1")
 ax2.set_title('Phase')
@@ -130,7 +145,7 @@ print ('K: ' + str(k))
 fig.clear()
 fig, (ax1, ax2) = plt.subplots(2,1)
 ax1.semilogx (w/(2*pi), mag, 'b-', linewidth="1")
-ax1.set_title('Magnitude')
+ax1.set_title('Magnitude Close Loop sist. Realim')
 
 ax2.semilogx (w/(2*pi), phase, 'r-', linewidth="1")
 ax2.set_title('Phase')

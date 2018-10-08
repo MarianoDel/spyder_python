@@ -86,6 +86,12 @@ def sympy_to_lti(xpr, s=sy.Symbol('s')):
 # lti_H = signal.lti([2], [1, 0, 3])
 #
 # # convert to Sympy:
+# Gs = lti_to_sympy(lti_G)
+# print (Gs)
+
+# realm = Gs/(1+Gs)
+# print (realm)
+
 # Gs, Hs = lti_to_sympy(lti_G), lti_to_sympy(lti_H)
 #
 # print("Converted LTI expressions:")
