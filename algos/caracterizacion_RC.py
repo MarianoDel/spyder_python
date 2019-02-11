@@ -16,8 +16,8 @@ R = 159.23
 C = 1e-6
 
 #Desde aca utilizo ceros y polos que entrego sympy
-num = [6280.22]				#esto es b0 s1 y b1 s0 (orden descendente)
-den = [1, 6280.22]				#esto es a0 s1 y a1 s0
+num = [6280.22]				#esto es b0 s^1 y b1 s^0 (orden descendente)
+den = [1, 6280.22]				#esto es a0 s^1 y a1 s^0
 
 planta = lti(num, den)
 
