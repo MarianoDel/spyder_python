@@ -1,0 +1,14 @@
+* Python for Stocks
+
+** APIs
+*** Polygon.io
+    da informacion de stocks
+
+*** Alapaca
+    alpaca.market
+
+    - da info y api paper trade y real trade
+    - tiene en la misma api acceso a info de polygon
+*** Robinhood
+    github.com/sanko/Robinhood
+
