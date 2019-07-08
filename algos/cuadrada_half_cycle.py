@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 muestras = 100
-Vmax = 465
+Vmax = 558
 
 s_cuad = np.ones(muestras)
 s_cuad = s_cuad * Vmax

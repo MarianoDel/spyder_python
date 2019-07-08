@@ -8,12 +8,9 @@ Vmax = 1000
 
 s_triang = np.zeros(muestras)
 
-for i in range(0, int(muestras/2)):
-    s_triang[i] = (i+1) * Vmax / (muestras/2)
+for i in range(np.size(s_triang)):
+    s_triang[i] = (i+1) * Vmax / (muestras)
 
-for i in range(int(muestras/2), muestras):
-    s_triang[i] = -(i+1) * Vmax / (muestras/2) + 2 * Vmax
-    
 s_triang_enteros = s_triang.astype(int)
 
 print (s_triang_enteros)
