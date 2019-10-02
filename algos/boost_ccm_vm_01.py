@@ -8,10 +8,11 @@ from scipy.signal import cont2discrete, dbode
 from tc_udemm import sympy_to_lti, lti_to_sympy
 
 """
-        Only Voltage Control Loop
-        Digital analisys of the
-        Analog part of the D100W Power Plant
-	PWM average model for the output (buck part) only
+        Boost PFC Voltage-Mode
+        La transferencia de energia no es directa, funciona en el ciclo apagado del PWM
+        Es equivalente a tener un transformador de n: 1/(1-d); con d = duty cycle
+        Refiero la tension de entrada y el inductor al circuito de salida para conocer vo(t)
+        La salida del circuito queda igual a un buck, pero con Vi y L trasladada a la salida
 """
 
 
@@ -19,28 +20,34 @@ from tc_udemm import sympy_to_lti, lti_to_sympy
 # Transfer Function equation for the output voltage and #
 # the output current.                                   #
 #########################################################
-Lout = 155e-6
-Cout = 940e-6
-# Rload = 2260    #esto es el consumo del circuito de salida, opamp, reguladores y precarga
-Rload = 10    #esto es el consumo del circuito de salida, opamp, reguladores y precarga
-Rsense = 0.11
+L = 100e-6
+Cout = 100e-6
+Rout = 10
+Vi = 10
 
-# Vpwm = 63    #max output in the main transformer limited to 0.5 by the duty_cycle
-Vpwm = 126    #max output in the main transformer no limited by the duty_cycle
+# L = 1.5e-3
+# Cout = 23.5e-6
+# Rout = 816
+# Rsense = 0.33
+# Vi = 311
 
-#TF equation Voltage on output and voltage on Rsense
+#Voltage and L reflected to output
+d = 0.4
+Lref = L/((1-d)**2)
+Vref = Vi/(1-d)
+
+print ('Reflected Params:')
+print ('Lref: %f Vref: %f with duty: %f' %(Lref, Vref, d))
+
+#TF equation Voltage and Lon output and voltage on Rsense
 s = Symbol('s')
-Z2 = 1/(s*Cout)
-Z1 = s*Lout
-Vth = Z2 / (Z1 + Z2)    #Vth without Vpwm
-# Vth = Z2 / (Z1 + Z2)    #Vth without Vpwm
-Rth = Z1 * Z2 / (Z1 + Z2)
-Zout_load = (Rload / (Rth + Rload + Rsense)) * Vth
+Z2 = Rout/(1 + s*Cout*Rout)
+Z1 = s*Lref
+Zth = Z2 / (Z1 + Z2)
 
-Plant_out = Vpwm * Zout_load
+Plant_out = Vref * Zth
 
 Plant_out_sim = Plant_out.simplify()
-
 print ('Plant_out: ')
 print (Plant_out_sim)
 
@@ -48,6 +55,96 @@ print (Plant_out_sim)
 # Desde aca utilizo ceros y polos que entrego sympy #
 #####################################################
 planta = sympy_to_lti(Plant_out_sim)
+print ("planta con sympy:")
+print (planta)
+
+freq = np.arange(1, 1000000, 1)
+
+w, mag, phase = bode(planta, freq)
+
+fig, (ax1, ax2) = plt.subplots(2,1)
+ax1.semilogx (w/(2*np.pi), mag, 'b-', linewidth="1")
+ax1.set_title('Plant Tf - Magnitude')
+
+ax2.semilogx (w/(2*np.pi), phase, 'r-', linewidth="1")
+ax2.set_title('Phase')
+
+plt.tight_layout()
+plt.show()
+
+"""    
+        PID Analogico
+        PID completo Tf = Kp + Ki/s + s Kd    Tf = 1/s * (s**2 Kd + s Kp + Ki)
+        muy dificil analizar, basicamente polo en origen y dos ceros
+        los dos ceros, segun los parametros elegidos, pueden llegar a ser complejos conjugados
+
+        si fuese solo PI tengo Tf = 1/s * Kp * (s + Ki/Kp)
+        esto es polo en origen w = 1; cero en w = Ki/Kp; ganancia Kp
+
+        si fuese solo PD tengo Tf = Kd * (s + Kp/Kd)
+        esto es cero en w = Kp/Kd y ganancia Kd
+
+        Conclusion:
+        elijo Kp para la ganancia media, ej 0dB Kp = 1
+        elijo primer cero, ej 15.9Hz, Ki = 100
+        elijo segundo cero, ej 1590Hz, Kd = 0.0001
+"""
+#################
+# PID analogico #
+#################
+kp = 1
+ki = 100
+kd = 0.0003
+
+Pid_out = kp + ki/s + s*kd
+Pid_out_sim = Pid_out.simplify()
+
+print ('Pid_out: ')
+print (Pid_out_sim)
+
+##############################################
+# Grafico de Bode con Polos y Ceros de sympy #
+##############################################
+pid = sympy_to_lti(Pid_out_sim)
+print ("PID con sympy:")
+print (pid)
+
+freq = np.arange(1, 1000000, 1)
+
+w, mag, phase = bode(pid, freq)
+
+fig, (ax1, ax2) = plt.subplots(2,1)
+ax1.semilogx (w/(2*np.pi), mag, 'b-', linewidth="1")
+ax1.set_title('PID Tf - Magnitude')
+
+ax2.semilogx (w/(2*np.pi), phase, 'r-', linewidth="1")
+ax2.set_title('Phase')
+
+plt.tight_layout()
+plt.show()
+
+###########################################
+# Multiplico Transferencias para OpenLoop #
+###########################################
+c = lti_to_sympy(pid)
+p = lti_to_sympy(planta)
+
+ol = c * p
+
+open_loop = sympy_to_lti(ol)
+open_loop = TransferFunction(open_loop.num, open_loop.den)   #normalizo
+
+w, mag, phase = bode(open_loop, freq)
+
+fig, (ax1, ax2) = plt.subplots(2,1)
+ax1.semilogx (w/(2*np.pi), mag, 'b-', linewidth="1")
+ax1.set_title('Open Loop Tf - Magnitude')
+
+ax2.semilogx (w/(2*np.pi), phase, 'r-', linewidth="1")
+ax2.set_title('Phase')
+
+plt.tight_layout()
+plt.show()
 
 
 ############################
@@ -66,13 +163,13 @@ print (planta_dig_tustin)
 ########################
 # Ecuacion PID Digital #
 ########################
-## Parametros analogicos del PID SOLO VOLTAGE MODE
-# kp = -276
-# ki = 552
-# kd = 0
-kp = 0.01
-ki = 2.51
-kd = 0.00000398
+# Parametros analogicos del PID SOLO VOLTAGE MODE
+# kp = 1
+# ki = 100
+# kd = 0.0003
+kp = 1
+ki = 11304
+kd = 0
 
 ki_dig = ki / Fsampling
 kp_dig = kp - ki_dig / 2
@@ -151,7 +248,7 @@ plt.show()
 #########################################
 
 # Respuesta escalon de la planta punto a punto
-tiempo_de_simulacion = 0.2
+tiempo_de_simulacion = 0.05
 print('td:')
 print (td)
 t = np.arange(0, tiempo_de_simulacion, td)
@@ -162,23 +259,31 @@ a_planta = np.transpose(planta_dig_tustin_d)
 
 vin_plant = np.zeros(t.size)
 vout_plant = np.zeros(t.size)
+step_out = np.zeros(t.size)
+step_in = np.zeros(t.size)
 
 
 ############################################
 # Armo la senial que quiero en el SETPOINT #
 ############################################
 muestras = np.size(t)
-Vout_sp = 35
+freq_vin = 50
+freq_vin_corr = freq_vin*tiempo_de_simulacion
 
-vin_setpoint = np.ones(t.size) * Vout_sp
+s_sen = np.zeros(muestras)
+
+# for i in range(np.size(s_sen)):
+#     s_sen[i] = np.sin(2*np.pi*freq_vin_corr*i/muestras) * 8
+#     if s_sen[i] < 0:
+#         s_sen[i] = -s_sen[i]
+
+# vin_setpoint = s_sen
+vin_setpoint = np.ones(t.size)
 
 d = np.zeros(t.size)
 error = np.zeros(t.size)
+max_d_pwm = 1
 
-# ver si limite la accion del PWM
-# max_d_pwm = 1.0    #limite la tension del PWM
-max_d_pwm = 0.5    #no limite el PWM, funciona al maximo y limito el duty_cycle
-undersampling = 0
 for i in range(2, len(vin_plant)):
     ###################################################
     # primero calculo el error, siempre punto a punto #
@@ -195,24 +300,6 @@ for i in range(2, len(vin_plant)):
 
     if d[i] < 0:
         d[i] = 0
-
-    ############################
-    # otro tipo de controlador #
-    ############################
-    # if undersampling > 10:
-    #     if (error[i] > 0):
-    #         if (d[i - 1] < max_d_pwm):
-    #             d[i] = d[i - 1] + 0.001
-            
-    #     else:
-    #         if (d[i - 1] > 0):
-    #             d[i] = d[i - 1] - 0.001
-
-    #     undersampling = 0
-    # else:
-    #     undersampling += 1
-    #     d[i] = d[i - 1]
-
         
     ########################################
     # aplico la transferencia de la planta #
@@ -223,7 +310,13 @@ for i in range(2, len(vin_plant)):
                     + b_planta[2]*vin_plant[i-2] \
                     - a_planta[1]*vout_plant[i-1] \
                     - a_planta[2]*vout_plant[i-2]
-    
+
+    step_in [i] = 1.0
+    step_out[i] = b_planta[0]*step_in[i] \
+                    + b_planta[1]*step_in[i-1] \
+                    + b_planta[2]*step_in[i-2] \
+                    - a_planta[1]*vout_plant[i-1] \
+                    - a_planta[2]*vout_plant[i-2]
                
         
 fig, ax = plt.subplots()
@@ -234,7 +327,41 @@ ax.grid()
 ax.plot(t, d, 'r')
 ax.plot(t, error, 'g')
 ax.plot(t, vin_setpoint, 'y')
+ax.plot(t, step_out, 'c')
 ax.stem(t, vout_plant)
 plt.tight_layout()
 plt.show()
+
+# # def ma_circular (new_sample, v_samples, v_index):
+# #     total_sum = 0
+# #     v_samples[v_index] = new_sample
+# #     if v_index < (len(v_samples) - 1):
+# #         v_index = v_index + 1
+# #     else:
+# #         v_index = 0
+# #     for i in range(len(v_samples)):
+# #         total_sum = total_sum + v_samples[i]
+
+# #     total_sum = total_sum / len(v_samples)
+
+# #     return total_sum, v_index
+
+
+# # vin_setpoint = np.ones(t.size) * Vout_sp
+# # vout_plant = np.asarray(vin_setpoint)
+# # v_filter = np.zeros(8)
+# # index_filer = 0
+# # for i in range(len(vout_plant)):
+# #     (vout_plant[i], index_filer) = ma_circular(vin_setpoint[i], v_filter, index_filer)
+               
+        
+# # fig, ax = plt.subplots()
+# # ax.set_title('Respuesta Filtro MA8')
+# # ax.set_ylabel('Salida')
+# # ax.set_xlabel('Tiempo en muestras')
+# # ax.grid()
+# # ax.plot(t, vin_setpoint, 'y')
+# # ax.stem(t, vout_plant)
+# # plt.tight_layout()
+# # plt.show()
 

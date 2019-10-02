@@ -8,7 +8,7 @@ from scipy.signal import cont2discrete, dbode
 from tc_udemm import sympy_to_lti, lti_to_sympy
 
 """
-        Only Voltage Control Loop
+        Only Voltage Control Loop, i get the sensed data throu a filter
         Digital analisys of the
         Analog part of the D100W Power Plant
 	PWM average model for the output (buck part) only
@@ -70,9 +70,9 @@ print (planta_dig_tustin)
 # kp = -276
 # ki = 552
 # kd = 0
-kp = 0.01
-ki = 2.51
-kd = 0.00000398
+kp = 1
+ki = 1
+kd = 0
 
 ki_dig = ki / Fsampling
 kp_dig = kp - ki_dig / 2
@@ -179,22 +179,46 @@ error = np.zeros(t.size)
 # max_d_pwm = 1.0    #limite la tension del PWM
 max_d_pwm = 0.5    #no limite el PWM, funciona al maximo y limito el duty_cycle
 undersampling = 0
+# seteo filtro MA8
+def ma_circular (new_sample, v_samples, v_index):
+    total_sum = 0
+    v_samples[v_index] = new_sample
+    if v_index < (len(v_samples) - 1):
+        v_index = v_index + 1
+    else:
+        v_index = 0
+    for i in range(len(v_samples)):
+        total_sum = total_sum + v_samples[i]
+
+    total_sum = total_sum / len(v_samples)
+
+    return total_sum, v_index
+
+v_filter = np.zeros(8)
+index_filer = 0
+
 for i in range(2, len(vin_plant)):
     ###################################################
     # primero calculo el error, siempre punto a punto #
     ###################################################
-    error[i] = vin_setpoint[i] - vout_plant[i-1]
+    (vout_plant[i-1], index_filer) = ma_circular(vout_plant[i-1],v_filter,index_filer)
+    #aplico pid solo cuando termian el filtro
+    if index_filer == 0:
+        error[i] = vin_setpoint[i] - vout_plant[i-1]
 
-    #############################################################
-    # aplico lazo PID y ajusto los maximo y minimos que permito #
-    #############################################################
-    d[i] = b_pid[0] * error[i] + b_pid[1] * error[i-1] + b_pid[2] * error[i-2] - a_pid[1] * d[i-1]
+        #############################################################
+        # aplico lazo PID y ajusto los maximo y minimos que permito #
+        #############################################################
+        d[i] = b_pid[0] * error[i] + b_pid[1] * error[i-1] + b_pid[2] * error[i-2] - a_pid[1] * d[i-1]
 
-    if d[i] > max_d_pwm:
-        d[i] = max_d_pwm
+        if d[i] > max_d_pwm:
+            d[i] = max_d_pwm
 
-    if d[i] < 0:
-        d[i] = 0
+        if d[i] < 0:
+            d[i] = 0
+
+    else:
+        d[i] = d[i-1]
 
     ############################
     # otro tipo de controlador #
@@ -237,4 +261,37 @@ ax.plot(t, vin_setpoint, 'y')
 ax.stem(t, vout_plant)
 plt.tight_layout()
 plt.show()
+
+# def ma_circular (new_sample, v_samples, v_index):
+#     total_sum = 0
+#     v_samples[v_index] = new_sample
+#     if v_index < (len(v_samples) - 1):
+#         v_index = v_index + 1
+#     else:
+#         v_index = 0
+#     for i in range(len(v_samples)):
+#         total_sum = total_sum + v_samples[i]
+
+#     total_sum = total_sum / len(v_samples)
+
+#     return total_sum, v_index
+
+
+# vin_setpoint = np.ones(t.size) * Vout_sp
+# vout_plant = np.asarray(vin_setpoint)
+# v_filter = np.zeros(8)
+# index_filer = 0
+# for i in range(len(vout_plant)):
+#     (vout_plant[i], index_filer) = ma_circular(vin_setpoint[i], v_filter, index_filer)
+               
+        
+# fig, ax = plt.subplots()
+# ax.set_title('Respuesta Filtro MA8')
+# ax.set_ylabel('Salida')
+# ax.set_xlabel('Tiempo en muestras')
+# ax.grid()
+# ax.plot(t, vin_setpoint, 'y')
+# ax.stem(t, vout_plant)
+# plt.tight_layout()
+# plt.show()
 
