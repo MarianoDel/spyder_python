@@ -7,8 +7,9 @@ from scipy.signal import lti, bode, lsim, dbode, zpk2tf, tf2zpk, step2, cont2dis
 from tc_udemm import sympy_to_lti, lti_to_sympy
 
 """
-        Analog part of the MicroInverter Power Plant
-	Current Filter sensor and Current Output power
+        MicroInversor - Etapa de salida de la parte Inverter
+	Etapa C.
+        Funcion como generador de senial senoidal
 """
 
 ################################################

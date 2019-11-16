@@ -78,7 +78,7 @@ print (planta_dig_tustin)
 # Respuesta escalon de la planta punto a punto #
 # entrando con Duty propuesto como escalon     #
 ################################################
-tiempo_de_simulacion = 0.2
+tiempo_de_simulacion = 2
 print('td:')
 print (td)
 t = np.arange(0, tiempo_de_simulacion, td)
@@ -120,10 +120,18 @@ vout_plant = np.zeros(t.size)
 # kd_dig = kd * Fsampling  #
 #                          #
 ############################
-kp_dig = 0.98
-# ki_dig = 1 / 15000
-ki_dig = 0.00416
-kd_dig = 15
+# funciona ok en 24000Hz
+# kp_dig = 125 / 128
+# ki_dig = 1 / 128
+# kd_dig = 15
+
+# funciona ok en 571Hz undersampling 42
+kp_dig = 1 / (128 * 3.3)
+ki_dig = 42 / (128 * 3.3)
+kd_dig = 0
+# kp_dig = 0
+# ki_dig = 41 / (128 * 3.3)
+# kd_dig = 0
 
 k1 = kp_dig + ki_dig + kd_dig
 k2 = -kp_dig - 2*kd_dig
@@ -150,7 +158,7 @@ error = np.zeros(t.size)
 d = np.zeros(t.size)
 
 max_d_pwm = 0.85
-under_roof = 0
+under_roof = 240
 undersampling = 0
 
 for i in range(2, len(vin_plant)):
@@ -158,6 +166,7 @@ for i in range(2, len(vin_plant)):
     # primero calculo el error, siempre punto a punto #
     ###################################################
     error[i] = vin_setpoint[i] - vout_plant[i-1]
+
 
     #############################################################
     # aplico lazo PID y ajusto los maximo y minimos que permito #
@@ -195,7 +204,8 @@ ax.grid()
 ax.plot(t, d, 'r')
 ax.plot(t, error, 'g')
 ax.plot(t, vin_setpoint, 'y')
-ax.stem(t, vout_plant)
+# ax.stem(t, vout_plant)
+ax.plot(t, vout_plant)
 plt.tight_layout()
 plt.show()
 

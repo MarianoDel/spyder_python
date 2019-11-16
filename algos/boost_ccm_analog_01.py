@@ -9,48 +9,24 @@ from scipy.signal import cont2discrete, dbode
 from tc_udemm import sympy_to_lti, lti_to_sympy
 
 """
-        Boost Voltage-Mode, ecuaciones segun:
-        http://www.ti.com/lit/an/slva633/slva633.pdf
-        Este a diferencia del Buck es un modelo de baja senial
-        entonces debo estimar el Duty al que va a estar sometido
+        Primer Parcial Teoria de Control
+        2019
 """
 
 
-#########################################################
-# Transfer Function equation for the output voltage and #
-# the output current.                                   #
-#########################################################
-L = 215.7e-6
-Cout = 940e-6
-RCout = 40e-3
-Rload = 24
-Vin = 17
-Vout = 36
-Duty = 1 - Vin/Vout
+########################################
+# Determinar la Planta segun los datos #
+########################################
+psi = 0.25
+wn = 4
+vfinal = 2
 
-# Equivalent units
-Leq = L /((1-Duty)**2)
-w0 = 1 /(np.sqrt( Leq * Cout ))
-Q = Rload /(Leq * w0)
-
-# Sense probe
-R1 = 22e3
-R2 = 1800
-alpha = R2/(R1+R2)
-# alpha = 1
-         
-
-print ('Equivalent Params:')
-print ('with a duty of: %.2f Leq: %f w0: %f Q: %f' %(Duty, Leq, w0, Q))
-
-#TF equation Voltage and Lon output and voltage on Rsense
+# Ecuacion de la Planta
 s = Symbol('s')
 
-Plant_num = (1 + s * Cout * RCout) * (1 - s * Leq/Rload)
-Plant_den = 1 + s /(w0*Q) + s**2/w0**2
-Plant_out = alpha * (Vin/(1-Duty)**2) * (Plant_num/Plant_den)
+planta = (wn**2 * vfinal) / (s**2 + 2 * psi * wn * s + wn**2)
 
-Plant_out_sim = Plant_out.simplify()
+Plant_out_sim = planta.simplify()
 print ('Plant_out: ')
 print (Plant_out_sim)
 
@@ -117,9 +93,11 @@ plt.show()
 #################
 # PID analogico #
 #################
-kp = 0.1
-ki = 1
-kd = 0.0001
+kp = 1
+ki = 10
+zero_d = 250
+w_d = 2 * np.pi * zero_d
+kd = kp / w_d
 new_pole = 6.28 * 2630
 # new_pole = 0
 

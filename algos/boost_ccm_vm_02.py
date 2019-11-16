@@ -33,8 +33,8 @@ w0 = 1 /(np.sqrt( Leq * Cout ))
 Q = Rload /(Leq * w0)
 
 # Sense probe
-R1 = 1800
-R2 = 22e3
+R1 = 22e3
+R2 = 1800
 alpha = R2/(R1+R2)
 # alpha = 1
          
